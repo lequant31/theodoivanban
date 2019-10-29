@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="4e4ca7ea2dd8499cb175f79d0120b9bc" Name="Diagram1">
+        <EntityTypeShape EntityType="TheoDoiVanBanModel.tbl_Account" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TheoDoiVanBanModel.tbl_AccountSupport" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="TheoDoiVanBanModel.tbl_CongViec" Width="1.5" PointX="3" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TheoDoiVanBanModel.tbl_CoQuanBanHanh" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TheoDoiVanBanModel.tbl_Donvi" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TheoDoiVanBanModel.tbl_LinhVucBanHanh" Width="1.5" PointX="2.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TheoDoiVanBanModel.tbl_LoaiVanBan" Width="1.5" PointX="4.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TheoDoiVanBanModel.ViewDonViVaCoQuan" Width="1.5" PointX="6.75" PointY="5.75" IsExpanded="true" />
+        <AssociationConnector Association="TheoDoiVanBanModel.FK_tbl_Account_tbl_Donvi" ManuallyRouted="false" />
+        <AssociationConnector Association="TheoDoiVanBanModel.FK_tbl_AccountSupport_tbl_Account" ManuallyRouted="false" />
+        <AssociationConnector Association="TheoDoiVanBanModel.FK_tbl_AccountSupport_tbl_CongViec" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

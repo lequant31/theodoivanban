@@ -1,0 +1,2105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="TheoDoiVanBanModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tbl_Account">
+          <Key>
+            <PropertyRef Name="Id_Account" />
+          </Key>
+          <Property Name="Id_Account" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FullName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="varchar(max)" Nullable="false" />
+          <Property Name="Avartar" Type="image" />
+          <Property Name="Id_DonVi_Tbl_DonVi" Type="int" />
+          <Property Name="Status" Type="bit" Nullable="false" />
+          <Property Name="IdParent" Type="int" />
+          <Property Name="NameParent" Type="nvarchar(max)" />
+          <Property Name="Level" Type="int" />
+        </EntityType>
+        <EntityType Name="tbl_AccountSupport">
+          <Key>
+            <PropertyRef Name="Id_tbl_AccountSupport" />
+          </Key>
+          <Property Name="Id_tbl_AccountSupport" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_tbl_CongViec" Type="int" />
+          <Property Name="Id_AccountTiepNhan" Type="int" />
+          <Property Name="NgayChuyenDen" Type="datetime" />
+          <Property Name="NgayTiepNhan" Type="datetime" />
+          <Property Name="NgayHoanThanhSupport" Type="datetime" />
+          <Property Name="KetQuaCongViec" Type="nvarchar(max)" />
+          <Property Name="PhanCongCongViec" Type="nvarchar" MaxLength="50" />
+          <Property Name="NgaySua" Type="datetime" />
+          <Property Name="StatusReceived" Type="bit" />
+          <Property Name="StatusFinish" Type="bit" />
+        </EntityType>
+        <EntityType Name="tbl_CongViec">
+          <Key>
+            <PropertyRef Name="Id_CongViec" />
+          </Key>
+          <Property Name="Id_CongViec" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_AccountKhoiTao" Type="int" />
+          <Property Name="Id_AccountGiaoViec" Type="int" />
+          <Property Name="SoVanBan" Type="nvarchar" MaxLength="50" />
+          <Property Name="NgayPhatHanh" Type="datetime" />
+          <Property Name="SoGhiSoCongVan" Type="nvarchar" MaxLength="50" />
+          <Property Name="NgayNhanVanBan" Type="datetime" />
+          <Property Name="Id_CoQuanBanHanh" Type="int" />
+          <Property Name="Id_loaiVanBan" Type="int" />
+          <Property Name="Id_LinhVucVanBan" Type="int" />
+          <Property Name="CommentLanhDao" Type="nvarchar(max)" />
+          <Property Name="NoiDungVanBan" Type="nvarchar(max)" />
+          <Property Name="NgayChiDao" Type="datetime" />
+          <Property Name="NgayPhaiHoanThanh" Type="datetime" />
+          <Property Name="PhaiBaoCao" Type="bit" />
+          <Property Name="NguoiNhanVanBan" Type="nvarchar(max)" />
+          <Property Name="TomTatKetQua" Type="nvarchar(max)" />
+          <Property Name="TaiLieuDinhKem" Type="nvarchar(max)" />
+          <Property Name="HoanThanh" Type="bit" />
+          <Property Name="ChuaHoanThanh" Type="bit" />
+          <Property Name="DangThucHien" Type="bit" />
+          <Property Name="ChuaThucHien" Type="bit" />
+          <Property Name="ThucHienCham" Type="bit" />
+          <Property Name="KetThucCongViec" Type="bit" />
+          <Property Name="NgayHoanThanh" Type="datetime" />
+          <Property Name="NgayTaoCongViec" Type="datetime" />
+          <Property Name="NgaySuaCongViec" Type="datetime" />
+          <Property Name="StatusForward" Type="bit" />
+        </EntityType>
+        <EntityType Name="tbl_CoQuanBanHanh">
+          <Key>
+            <PropertyRef Name="Id_CoQuanBanHanh" />
+          </Key>
+          <Property Name="Id_CoQuanBanHanh" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenCoQuan" Type="nvarchar(max)" />
+          <Property Name="SoHieuCoQuan" Type="nvarchar" MaxLength="50" />
+          <Property Name="PrintName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tbl_Donvi">
+          <Key>
+            <PropertyRef Name="Id_DonVi" />
+          </Key>
+          <Property Name="Id_DonVi" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameDonVi" Type="nvarchar(max)" />
+          <Property Name="SoHieuDonVi" Type="nvarchar" MaxLength="50" />
+          <Property Name="PrintNameDonVi" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tbl_LinhVucBanHanh">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CodeLinhVuc" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="NameLinhVuc" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_LoaiVanBan">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CodeVanBan" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="NameVanBan" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'TheoDoiVanBan.dbo.ViewDonViVaCoQuan' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ViewDonViVaCoQuan">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="SoHieu" Type="nvarchar" MaxLength="50" />
+          <Property Name="PrintName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_tbl_Account_tbl_Donvi">
+          <End Role="tbl_Donvi" Type="Self.tbl_Donvi" Multiplicity="0..1" />
+          <End Role="tbl_Account" Type="Self.tbl_Account" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Donvi">
+              <PropertyRef Name="Id_DonVi" />
+            </Principal>
+            <Dependent Role="tbl_Account">
+              <PropertyRef Name="Id_DonVi_Tbl_DonVi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_AccountSupport_tbl_Account">
+          <End Role="tbl_Account" Type="Self.tbl_Account" Multiplicity="0..1" />
+          <End Role="tbl_AccountSupport" Type="Self.tbl_AccountSupport" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Account">
+              <PropertyRef Name="Id_Account" />
+            </Principal>
+            <Dependent Role="tbl_AccountSupport">
+              <PropertyRef Name="Id_AccountTiepNhan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_AccountSupport_tbl_CongViec">
+          <End Role="tbl_CongViec" Type="Self.tbl_CongViec" Multiplicity="0..1" />
+          <End Role="tbl_AccountSupport" Type="Self.tbl_AccountSupport" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_CongViec">
+              <PropertyRef Name="Id_CongViec" />
+            </Principal>
+            <Dependent Role="tbl_AccountSupport">
+              <PropertyRef Name="Id_tbl_CongViec" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="AddLinhVucBanHanh" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CodeLinhVuc" Type="nvarchar" Mode="In" />
+          <Parameter Name="NameLinhVuc" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="AddLoaiVanBan" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CodeVanBan" Type="nvarchar" Mode="In" />
+          <Parameter Name="NameVanBan" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="checkreceived" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id_tbl_AccountSupport" Type="int" Mode="In" />
+        </Function>
+        <Function Name="CreateJob" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id_AccountKhoiTao" Type="int" Mode="In" />
+          <Parameter Name="Id_AccountGiaoViec" Type="int" Mode="In" />
+          <Parameter Name="SoVanBan" Type="nvarchar" Mode="In" />
+          <Parameter Name="NgayPhatHanh" Type="datetime" Mode="In" />
+          <Parameter Name="SoGhiSoCongVan" Type="nvarchar" Mode="In" />
+          <Parameter Name="NgayNhanVanBan" Type="datetime" Mode="In" />
+          <Parameter Name="Id_CoQuanBanHanh" Type="int" Mode="In" />
+          <Parameter Name="Id_loaiVanBan" Type="int" Mode="In" />
+          <Parameter Name="Id_LinhVucVanBan" Type="int" Mode="In" />
+          <Parameter Name="CommentLanhDao" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="NoiDungVanBan" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="NgayChiDao" Type="datetime" Mode="In" />
+          <Parameter Name="NgayPhaiHoanThanh" Type="datetime" Mode="In" />
+          <Parameter Name="PhaiBaoCao" Type="bit" Mode="In" />
+          <Parameter Name="NguoiNhanVanBan" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="TomTatKetQua" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="TaiLieuDinhKem" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="HoanThanh" Type="bit" Mode="In" />
+          <Parameter Name="ChuaHoanThanh" Type="bit" Mode="In" />
+          <Parameter Name="DangThucHien" Type="bit" Mode="In" />
+          <Parameter Name="ChuaThucHien" Type="bit" Mode="In" />
+          <Parameter Name="ThucHienCham" Type="bit" Mode="In" />
+          <Parameter Name="KetThucCongViec" Type="bit" Mode="In" />
+          <Parameter Name="NgayHoanThanh" Type="datetime" Mode="In" />
+          <Parameter Name="NgayTaoCongViec" Type="datetime" Mode="In" />
+          <Parameter Name="StatusForward" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="DeleteCreateJob" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id_congviec" Type="int" Mode="In" />
+        </Function>
+        <Function Name="DeleteLinhVucBanHanh" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="DeleteLoaiVanBan" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="EditCreateJob" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id_tbl_congviec" Type="int" Mode="In" />
+          <Parameter Name="SoVanBan" Type="nvarchar" Mode="In" />
+          <Parameter Name="NgayPhatHanh" Type="datetime" Mode="In" />
+          <Parameter Name="SoGhiSoCongVan" Type="nvarchar" Mode="In" />
+          <Parameter Name="NgayNhanVanBan" Type="datetime" Mode="In" />
+          <Parameter Name="Id_CoQuanBanHanh" Type="int" Mode="In" />
+          <Parameter Name="Id_loaiVanBan" Type="int" Mode="In" />
+          <Parameter Name="Id_LinhVucVanBan" Type="int" Mode="In" />
+          <Parameter Name="CommentLanhDao" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="NoiDungVanBan" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="NgayChiDao" Type="datetime" Mode="In" />
+          <Parameter Name="NgayPhaiHoanThanh" Type="datetime" Mode="In" />
+          <Parameter Name="PhaiBaoCao" Type="bit" Mode="In" />
+          <Parameter Name="NguoiNhanVanBan" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="TomTatKetQua" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="TaiLieuDinhKem" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="HoanThanh" Type="bit" Mode="In" />
+          <Parameter Name="ChuaHoanThanh" Type="bit" Mode="In" />
+          <Parameter Name="DangThucHien" Type="bit" Mode="In" />
+          <Parameter Name="ChuaThucHien" Type="bit" Mode="In" />
+          <Parameter Name="ThucHienCham" Type="bit" Mode="In" />
+          <Parameter Name="KetThucCongViec" Type="bit" Mode="In" />
+          <Parameter Name="NgayHoanThanh" Type="datetime" Mode="In" />
+          <Parameter Name="NgaySuaCongViec" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="EditLinhVucBanHanh" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+          <Parameter Name="CodeLinhVuc" Type="nvarchar" Mode="In" />
+          <Parameter Name="NameLinhVuc" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="EditLoaiVanBan" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+          <Parameter Name="CodeVanBan" Type="nvarchar" Mode="In" />
+          <Parameter Name="NameVanBan" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="EnableStatusforward" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id_CongViec" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetAccountInGroup" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="TopLevelParent" Type="int" Mode="In" />
+          <Parameter Name="IdDonVi" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetAllAccountSupport_OneJob" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id_congviec" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetAllCoQuanVaDonVi" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetAllDonViCongViec" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id_donvi" Type="int" Mode="In" />
+          <Parameter Name="Id_Account" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetAllLinhVucBanHanh" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetAllLoaiVanBan" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetCreateJob" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id_AccountKhoiTao" Type="int" Mode="In" />
+          <Parameter Name="Id_NguoiGiaoViec" Type="int" Mode="In" />
+          <Parameter Name="Id_donvi" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetCreateJobPhoPhong" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id_AccountKhoiTao" Type="int" Mode="In" />
+          <Parameter Name="Id_NguoiGiaoViec" Type="int" Mode="In" />
+          <Parameter Name="Id_donvi" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetCreateJobTruongPhong" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id_donvi" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetForwardCreateJob" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id_tbl_congviec" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetInfor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id_User" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetOneCongViec" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id_conviec" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GiaoViecChinh" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id_tbl_CongViec" Type="int" Mode="In" />
+          <Parameter Name="Id_Account" Type="int" Mode="In" />
+          <Parameter Name="NgayChuyenDen" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="GiaoViecHoTro" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id_tbl_CongViec" Type="int" Mode="In" />
+          <Parameter Name="Id_Account" Type="int" Mode="In" />
+          <Parameter Name="NgayChuyenDen" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="HoanThanhCongViec" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id_tbl_AccountSupport" Type="int" Mode="In" />
+          <Parameter Name="NgayHoanThanhSupport" Type="datetime" Mode="In" />
+          <Parameter Name="KetQuaCongViec" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="NgaySua" Type="datetime" Mode="In" />
+          <Parameter Name="StatusFinish" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="login" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id_donvi" Type="int" Mode="In" />
+          <Parameter Name="username" Type="nvarchar" Mode="In" />
+          <Parameter Name="password" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="NhanViec" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id_AccountSupport" Type="int" Mode="In" />
+          <Parameter Name="idDonvi" Type="int" Mode="In" />
+        </Function>
+        <Function Name="NhanViecChiTiet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id_tbl_donvi" Type="int" Mode="In" />
+          <Parameter Name="Id_AccountSupport" Type="int" Mode="In" />
+          <Parameter Name="Id_btl_congviec" Type="int" Mode="In" />
+        </Function>
+        <Function Name="QuanlyViecNhom" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id_tbl_donvi" Type="int" Mode="In" />
+          <Parameter Name="Id_Account" Type="int" Mode="In" />
+        </Function>
+        <Function Name="QuanlyViecNhomChiTiet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id_tbl_donvi" Type="int" Mode="In" />
+          <Parameter Name="Id_Account" Type="int" Mode="In" />
+          <Parameter Name="Id_tbl_congviec" Type="int" Mode="In" />
+        </Function>
+        <Function Name="tbl_Group_DonVi_CongViec" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id_donvi" Type="int" Mode="In" />
+          <Parameter Name="Id_account" Type="int" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="FullName" Type="nvarchar" MaxLength="50" />
+                <Property Name="SoVanBan" Type="nvarchar" MaxLength="50" />
+                <Property Name="SoGhiSoCongVan" Type="nvarchar" MaxLength="50" />
+                <Property Name="CommentLanhDao" Type="nvarchar(max)" />
+                <Property Name="NoiDungVanBan" Type="nvarchar(max)" />
+                <Property Name="TopLevelParent" Type="int" />
+                <Property Name="IdCV" Type="int" Nullable="false" />
+                <Property Name="IdAccount" Type="int" />
+                <Property Name="ketqua" Type="nvarchar(max)" />
+                <Property Name="ngayhoanthanh" Type="datetime" />
+                <Property Name="kethuc" Type="bit" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="UpdateGiaiQuyetViecDaNhan" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id_tblAccountSupport" Type="int" Mode="In" />
+          <Parameter Name="NgayHoanThanh" Type="datetime" Mode="In" />
+          <Parameter Name="KetQuaCongViec" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="NgaySua" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="UpdateNhanViec" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id_tbl_AccountSupport" Type="int" Mode="In" />
+          <Parameter Name="Id_AccountSupport" Type="int" Mode="In" />
+          <Parameter Name="StatusReceived" Type="bit" Mode="In" />
+          <Parameter Name="NgayTiepNhan" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="ViecDaNhan" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id_AccountSupport" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="TheoDoiVanBanModelStoreContainer">
+          <EntitySet Name="tbl_Account" EntityType="Self.tbl_Account" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_AccountSupport" EntityType="Self.tbl_AccountSupport" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_CongViec" EntityType="Self.tbl_CongViec" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_CoQuanBanHanh" EntityType="Self.tbl_CoQuanBanHanh" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Donvi" EntityType="Self.tbl_Donvi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_LinhVucBanHanh" EntityType="Self.tbl_LinhVucBanHanh" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_LoaiVanBan" EntityType="Self.tbl_LoaiVanBan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ViewDonViVaCoQuan" EntityType="Self.ViewDonViVaCoQuan" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ViewDonViVaCoQuan].[Id] AS [Id], 
+    [ViewDonViVaCoQuan].[Name] AS [Name], 
+    [ViewDonViVaCoQuan].[SoHieu] AS [SoHieu], 
+    [ViewDonViVaCoQuan].[PrintName] AS [PrintName]
+    FROM [dbo].[ViewDonViVaCoQuan] AS [ViewDonViVaCoQuan]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_tbl_Account_tbl_Donvi" Association="Self.FK_tbl_Account_tbl_Donvi">
+            <End Role="tbl_Donvi" EntitySet="tbl_Donvi" />
+            <End Role="tbl_Account" EntitySet="tbl_Account" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_AccountSupport_tbl_Account" Association="Self.FK_tbl_AccountSupport_tbl_Account">
+            <End Role="tbl_Account" EntitySet="tbl_Account" />
+            <End Role="tbl_AccountSupport" EntitySet="tbl_AccountSupport" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_AccountSupport_tbl_CongViec" Association="Self.FK_tbl_AccountSupport_tbl_CongViec">
+            <End Role="tbl_CongViec" EntitySet="tbl_CongViec" />
+            <End Role="tbl_AccountSupport" EntitySet="tbl_AccountSupport" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TheoDoiVanBanModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tbl_Account">
+          <Key>
+            <PropertyRef Name="Id_Account" />
+          </Key>
+          <Property Name="Id_Account" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FullName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Avartar" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Id_DonVi_Tbl_DonVi" Type="Int32" />
+          <Property Name="Status" Type="Boolean" Nullable="false" />
+          <Property Name="IdParent" Type="Int32" />
+          <Property Name="NameParent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Level" Type="Int32" />
+          <NavigationProperty Name="tbl_Donvi" Relationship="Self.FK_tbl_Account_tbl_Donvi" FromRole="tbl_Account" ToRole="tbl_Donvi" />
+          <NavigationProperty Name="tbl_AccountSupport" Relationship="Self.FK_tbl_AccountSupport_tbl_Account" FromRole="tbl_Account" ToRole="tbl_AccountSupport" />
+        </EntityType>
+        <EntityType Name="tbl_AccountSupport">
+          <Key>
+            <PropertyRef Name="Id_tbl_AccountSupport" />
+          </Key>
+          <Property Name="Id_tbl_AccountSupport" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_tbl_CongViec" Type="Int32" />
+          <Property Name="Id_AccountTiepNhan" Type="Int32" />
+          <Property Name="NgayChuyenDen" Type="DateTime" Precision="3" />
+          <Property Name="NgayTiepNhan" Type="DateTime" Precision="3" />
+          <Property Name="NgayHoanThanhSupport" Type="DateTime" Precision="3" />
+          <Property Name="KetQuaCongViec" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhanCongCongViec" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NgaySua" Type="DateTime" Precision="3" />
+          <Property Name="StatusReceived" Type="Boolean" />
+          <Property Name="StatusFinish" Type="Boolean" />
+          <NavigationProperty Name="tbl_Account" Relationship="Self.FK_tbl_AccountSupport_tbl_Account" FromRole="tbl_AccountSupport" ToRole="tbl_Account" />
+          <NavigationProperty Name="tbl_CongViec" Relationship="Self.FK_tbl_AccountSupport_tbl_CongViec" FromRole="tbl_AccountSupport" ToRole="tbl_CongViec" />
+        </EntityType>
+        <EntityType Name="tbl_CongViec">
+          <Key>
+            <PropertyRef Name="Id_CongViec" />
+          </Key>
+          <Property Name="Id_CongViec" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_AccountKhoiTao" Type="Int32" />
+          <Property Name="Id_AccountGiaoViec" Type="Int32" />
+          <Property Name="SoVanBan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NgayPhatHanh" Type="DateTime" Precision="3" />
+          <Property Name="SoGhiSoCongVan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NgayNhanVanBan" Type="DateTime" Precision="3" />
+          <Property Name="Id_CoQuanBanHanh" Type="Int32" />
+          <Property Name="Id_loaiVanBan" Type="Int32" />
+          <Property Name="Id_LinhVucVanBan" Type="Int32" />
+          <Property Name="CommentLanhDao" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NoiDungVanBan" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NgayChiDao" Type="DateTime" Precision="3" />
+          <Property Name="NgayPhaiHoanThanh" Type="DateTime" Precision="3" />
+          <Property Name="PhaiBaoCao" Type="Boolean" />
+          <Property Name="NguoiNhanVanBan" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TomTatKetQua" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TaiLieuDinhKem" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="HoanThanh" Type="Boolean" />
+          <Property Name="ChuaHoanThanh" Type="Boolean" />
+          <Property Name="DangThucHien" Type="Boolean" />
+          <Property Name="ChuaThucHien" Type="Boolean" />
+          <Property Name="ThucHienCham" Type="Boolean" />
+          <Property Name="KetThucCongViec" Type="Boolean" />
+          <Property Name="NgayHoanThanh" Type="DateTime" Precision="3" />
+          <Property Name="NgayTaoCongViec" Type="DateTime" Precision="3" />
+          <Property Name="NgaySuaCongViec" Type="DateTime" Precision="3" />
+          <Property Name="StatusForward" Type="Boolean" />
+          <NavigationProperty Name="tbl_AccountSupport" Relationship="Self.FK_tbl_AccountSupport_tbl_CongViec" FromRole="tbl_CongViec" ToRole="tbl_AccountSupport" />
+        </EntityType>
+        <EntityType Name="tbl_CoQuanBanHanh">
+          <Key>
+            <PropertyRef Name="Id_CoQuanBanHanh" />
+          </Key>
+          <Property Name="Id_CoQuanBanHanh" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenCoQuan" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SoHieuCoQuan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PrintName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tbl_Donvi">
+          <Key>
+            <PropertyRef Name="Id_DonVi" />
+          </Key>
+          <Property Name="Id_DonVi" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameDonVi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SoHieuDonVi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PrintNameDonVi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tbl_Account" Relationship="Self.FK_tbl_Account_tbl_Donvi" FromRole="tbl_Donvi" ToRole="tbl_Account" />
+        </EntityType>
+        <EntityType Name="tbl_LinhVucBanHanh">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CodeLinhVuc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NameLinhVuc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_LoaiVanBan">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CodeVanBan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NameVanBan" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ViewDonViVaCoQuan">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SoHieu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PrintName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_tbl_Account_tbl_Donvi">
+          <End Role="tbl_Donvi" Type="Self.tbl_Donvi" Multiplicity="0..1" />
+          <End Role="tbl_Account" Type="Self.tbl_Account" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Donvi">
+              <PropertyRef Name="Id_DonVi" />
+            </Principal>
+            <Dependent Role="tbl_Account">
+              <PropertyRef Name="Id_DonVi_Tbl_DonVi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_AccountSupport_tbl_Account">
+          <End Role="tbl_Account" Type="Self.tbl_Account" Multiplicity="0..1" />
+          <End Role="tbl_AccountSupport" Type="Self.tbl_AccountSupport" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Account">
+              <PropertyRef Name="Id_Account" />
+            </Principal>
+            <Dependent Role="tbl_AccountSupport">
+              <PropertyRef Name="Id_AccountTiepNhan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_AccountSupport_tbl_CongViec">
+          <End Role="tbl_CongViec" Type="Self.tbl_CongViec" Multiplicity="0..1" />
+          <End Role="tbl_AccountSupport" Type="Self.tbl_AccountSupport" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_CongViec">
+              <PropertyRef Name="Id_CongViec" />
+            </Principal>
+            <Dependent Role="tbl_AccountSupport">
+              <PropertyRef Name="Id_tbl_CongViec" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TheoDoiVanBanEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tbl_Account" EntityType="Self.tbl_Account" />
+          <EntitySet Name="tbl_AccountSupport" EntityType="Self.tbl_AccountSupport" />
+          <EntitySet Name="tbl_CongViec" EntityType="Self.tbl_CongViec" />
+          <EntitySet Name="tbl_CoQuanBanHanh" EntityType="Self.tbl_CoQuanBanHanh" />
+          <EntitySet Name="tbl_Donvi" EntityType="Self.tbl_Donvi" />
+          <EntitySet Name="tbl_LinhVucBanHanh" EntityType="Self.tbl_LinhVucBanHanh" />
+          <EntitySet Name="tbl_LoaiVanBan" EntityType="Self.tbl_LoaiVanBan" />
+          <EntitySet Name="ViewDonViVaCoQuan" EntityType="Self.ViewDonViVaCoQuan" />
+          <AssociationSet Name="FK_tbl_Account_tbl_Donvi" Association="Self.FK_tbl_Account_tbl_Donvi">
+            <End Role="tbl_Donvi" EntitySet="tbl_Donvi" />
+            <End Role="tbl_Account" EntitySet="tbl_Account" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_AccountSupport_tbl_Account" Association="Self.FK_tbl_AccountSupport_tbl_Account">
+            <End Role="tbl_Account" EntitySet="tbl_Account" />
+            <End Role="tbl_AccountSupport" EntitySet="tbl_AccountSupport" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_AccountSupport_tbl_CongViec" Association="Self.FK_tbl_AccountSupport_tbl_CongViec">
+            <End Role="tbl_CongViec" EntitySet="tbl_CongViec" />
+            <End Role="tbl_AccountSupport" EntitySet="tbl_AccountSupport" />
+          </AssociationSet>
+          <FunctionImport Name="AddLinhVucBanHanh">
+            <Parameter Name="CodeLinhVuc" Mode="In" Type="String" />
+            <Parameter Name="NameLinhVuc" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="AddLoaiVanBan">
+            <Parameter Name="CodeVanBan" Mode="In" Type="String" />
+            <Parameter Name="NameVanBan" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="checkreceived" ReturnType="Collection(TheoDoiVanBanModel.checkreceived_Result)">
+          <Parameter Name="Id_tbl_AccountSupport" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="CreateJob">
+            <Parameter Name="Id_AccountKhoiTao" Mode="In" Type="Int32" />
+            <Parameter Name="Id_AccountGiaoViec" Mode="In" Type="Int32" />
+            <Parameter Name="SoVanBan" Mode="In" Type="String" />
+            <Parameter Name="NgayPhatHanh" Mode="In" Type="DateTime" />
+            <Parameter Name="SoGhiSoCongVan" Mode="In" Type="String" />
+            <Parameter Name="NgayNhanVanBan" Mode="In" Type="DateTime" />
+            <Parameter Name="Id_CoQuanBanHanh" Mode="In" Type="Int32" />
+            <Parameter Name="Id_loaiVanBan" Mode="In" Type="Int32" />
+            <Parameter Name="Id_LinhVucVanBan" Mode="In" Type="Int32" />
+            <Parameter Name="CommentLanhDao" Mode="In" Type="String" />
+            <Parameter Name="NoiDungVanBan" Mode="In" Type="String" />
+            <Parameter Name="NgayChiDao" Mode="In" Type="DateTime" />
+            <Parameter Name="NgayPhaiHoanThanh" Mode="In" Type="DateTime" />
+            <Parameter Name="PhaiBaoCao" Mode="In" Type="Boolean" />
+            <Parameter Name="NguoiNhanVanBan" Mode="In" Type="String" />
+            <Parameter Name="TomTatKetQua" Mode="In" Type="String" />
+            <Parameter Name="TaiLieuDinhKem" Mode="In" Type="String" />
+            <Parameter Name="HoanThanh" Mode="In" Type="Boolean" />
+            <Parameter Name="ChuaHoanThanh" Mode="In" Type="Boolean" />
+            <Parameter Name="DangThucHien" Mode="In" Type="Boolean" />
+            <Parameter Name="ChuaThucHien" Mode="In" Type="Boolean" />
+            <Parameter Name="ThucHienCham" Mode="In" Type="Boolean" />
+            <Parameter Name="KetThucCongViec" Mode="In" Type="Boolean" />
+            <Parameter Name="NgayHoanThanh" Mode="In" Type="DateTime" />
+            <Parameter Name="NgayTaoCongViec" Mode="In" Type="DateTime" />
+            <Parameter Name="StatusForward" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="DeleteCreateJob">
+          <Parameter Name="Id_congviec" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="DeleteLinhVucBanHanh">
+          <Parameter Name="Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="DeleteLoaiVanBan">
+          <Parameter Name="Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="EditCreateJob">
+            <Parameter Name="Id_tbl_congviec" Mode="In" Type="Int32" />
+            <Parameter Name="SoVanBan" Mode="In" Type="String" />
+            <Parameter Name="NgayPhatHanh" Mode="In" Type="DateTime" />
+            <Parameter Name="SoGhiSoCongVan" Mode="In" Type="String" />
+            <Parameter Name="NgayNhanVanBan" Mode="In" Type="DateTime" />
+            <Parameter Name="Id_CoQuanBanHanh" Mode="In" Type="Int32" />
+            <Parameter Name="Id_loaiVanBan" Mode="In" Type="Int32" />
+            <Parameter Name="Id_LinhVucVanBan" Mode="In" Type="Int32" />
+            <Parameter Name="CommentLanhDao" Mode="In" Type="String" />
+            <Parameter Name="NoiDungVanBan" Mode="In" Type="String" />
+            <Parameter Name="NgayChiDao" Mode="In" Type="DateTime" />
+            <Parameter Name="NgayPhaiHoanThanh" Mode="In" Type="DateTime" />
+            <Parameter Name="PhaiBaoCao" Mode="In" Type="Boolean" />
+            <Parameter Name="NguoiNhanVanBan" Mode="In" Type="String" />
+            <Parameter Name="TomTatKetQua" Mode="In" Type="String" />
+            <Parameter Name="TaiLieuDinhKem" Mode="In" Type="String" />
+            <Parameter Name="HoanThanh" Mode="In" Type="Boolean" />
+            <Parameter Name="ChuaHoanThanh" Mode="In" Type="Boolean" />
+            <Parameter Name="DangThucHien" Mode="In" Type="Boolean" />
+            <Parameter Name="ChuaThucHien" Mode="In" Type="Boolean" />
+            <Parameter Name="ThucHienCham" Mode="In" Type="Boolean" />
+            <Parameter Name="KetThucCongViec" Mode="In" Type="Boolean" />
+            <Parameter Name="NgayHoanThanh" Mode="In" Type="DateTime" />
+            <Parameter Name="NgaySuaCongViec" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="EditLinhVucBanHanh">
+            <Parameter Name="Id" Mode="In" Type="Int32" />
+            <Parameter Name="CodeLinhVuc" Mode="In" Type="String" />
+            <Parameter Name="NameLinhVuc" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="EditLoaiVanBan">
+            <Parameter Name="Id" Mode="In" Type="Int32" />
+            <Parameter Name="CodeVanBan" Mode="In" Type="String" />
+            <Parameter Name="NameVanBan" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="EnableStatusforward">
+          <Parameter Name="Id_CongViec" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetAccountInGroup" ReturnType="Collection(TheoDoiVanBanModel.GetAccountInGroup_Result)">
+            <Parameter Name="TopLevelParent" Mode="In" Type="Int32" />
+            <Parameter Name="IdDonVi" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetAllAccountSupport_OneJob" ReturnType="Collection(TheoDoiVanBanModel.GetAllAccountSupport_OneJob_Result)">
+          <Parameter Name="Id_congviec" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetAllCoQuanVaDonVi" ReturnType="Collection(TheoDoiVanBanModel.GetAllCoQuanVaDonVi_Result)" />
+          <FunctionImport Name="GetAllLinhVucBanHanh" ReturnType="Collection(TheoDoiVanBanModel.GetAllLinhVucBanHanh_Result)" />
+          <FunctionImport Name="GetAllLoaiVanBan" ReturnType="Collection(TheoDoiVanBanModel.GetAllLoaiVanBan_Result)" />
+          <FunctionImport Name="GetCreateJob" ReturnType="Collection(TheoDoiVanBanModel.GetCreateJob_Result)">
+            <Parameter Name="Id_AccountKhoiTao" Mode="In" Type="Int32" />
+            <Parameter Name="Id_NguoiGiaoViec" Mode="In" Type="Int32" />
+            <Parameter Name="Id_donvi" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetCreateJobPhoPhong" ReturnType="Collection(TheoDoiVanBanModel.GetCreateJobPhoPhong_Result)">
+            <Parameter Name="Id_AccountKhoiTao" Mode="In" Type="Int32" />
+            <Parameter Name="Id_NguoiGiaoViec" Mode="In" Type="Int32" />
+            <Parameter Name="Id_donvi" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetCreateJobTruongPhong" ReturnType="Collection(TheoDoiVanBanModel.GetCreateJobTruongPhong_Result)">
+          <Parameter Name="Id_donvi" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetForwardCreateJob" ReturnType="Collection(TheoDoiVanBanModel.GetForwardCreateJob_Result)">
+          <Parameter Name="Id_tbl_congviec" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetInfor" ReturnType="Collection(TheoDoiVanBanModel.GetInfor_Result)">
+          <Parameter Name="Id_User" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetOneCongViec" ReturnType="Collection(TheoDoiVanBanModel.GetOneCongViec_Result)">
+          <Parameter Name="Id_conviec" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GiaoViecChinh">
+            <Parameter Name="Id_tbl_CongViec" Mode="In" Type="Int32" />
+            <Parameter Name="Id_Account" Mode="In" Type="Int32" />
+            <Parameter Name="NgayChuyenDen" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="GiaoViecHoTro">
+            <Parameter Name="Id_tbl_CongViec" Mode="In" Type="Int32" />
+            <Parameter Name="Id_Account" Mode="In" Type="Int32" />
+            <Parameter Name="NgayChuyenDen" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="HoanThanhCongViec">
+            <Parameter Name="Id_tbl_AccountSupport" Mode="In" Type="Int32" />
+            <Parameter Name="NgayHoanThanhSupport" Mode="In" Type="DateTime" />
+            <Parameter Name="KetQuaCongViec" Mode="In" Type="String" />
+            <Parameter Name="NgaySua" Mode="In" Type="DateTime" />
+            <Parameter Name="StatusFinish" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="login" ReturnType="Collection(TheoDoiVanBanModel.login_Result)">
+            <Parameter Name="Id_donvi" Mode="In" Type="Int32" />
+            <Parameter Name="username" Mode="In" Type="String" />
+            <Parameter Name="password" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="NhanViec" ReturnType="Collection(TheoDoiVanBanModel.NhanViec_Result)">
+            <Parameter Name="Id_AccountSupport" Mode="In" Type="Int32" />
+            <Parameter Name="idDonvi" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="NhanViecChiTiet" ReturnType="Collection(TheoDoiVanBanModel.NhanViecChiTiet_Result)">
+            <Parameter Name="Id_tbl_donvi" Mode="In" Type="Int32" />
+            <Parameter Name="Id_AccountSupport" Mode="In" Type="Int32" />
+            <Parameter Name="Id_btl_congviec" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="QuanlyViecNhom" ReturnType="Collection(TheoDoiVanBanModel.QuanlyViecNhom_Result)">
+            <Parameter Name="Id_tbl_donvi" Mode="In" Type="Int32" />
+            <Parameter Name="Id_Account" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="QuanlyViecNhomChiTiet" ReturnType="Collection(TheoDoiVanBanModel.QuanlyViecNhomChiTiet_Result)">
+            <Parameter Name="Id_tbl_donvi" Mode="In" Type="Int32" />
+            <Parameter Name="Id_Account" Mode="In" Type="Int32" />
+            <Parameter Name="Id_tbl_congviec" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateGiaiQuyetViecDaNhan">
+            <Parameter Name="Id_tblAccountSupport" Mode="In" Type="Int32" />
+            <Parameter Name="NgayHoanThanh" Mode="In" Type="DateTime" />
+            <Parameter Name="KetQuaCongViec" Mode="In" Type="String" />
+            <Parameter Name="NgaySua" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateNhanViec">
+            <Parameter Name="Id_tbl_AccountSupport" Mode="In" Type="Int32" />
+            <Parameter Name="Id_AccountSupport" Mode="In" Type="Int32" />
+            <Parameter Name="StatusReceived" Mode="In" Type="Boolean" />
+            <Parameter Name="NgayTiepNhan" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="ViecDaNhan" ReturnType="Collection(TheoDoiVanBanModel.ViecDaNhan_Result)">
+          <Parameter Name="Id_AccountSupport" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="tbl_Group_DonVi_CongViec" IsComposable="true" ReturnType="Collection(TheoDoiVanBanModel.tbl_Group_DonVi_CongViec_Result)">
+            <Parameter Name="Id_donvi" Mode="In" Type="Int32" />
+            <Parameter Name="Id_account" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetAllDonViCongViec" ReturnType="Collection(TheoDoiVanBanModel.GetAllDonViCongViec_Result)">
+            <Parameter Name="Id_donvi" Mode="In" Type="Int32" />
+            <Parameter Name="Id_Account" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="checkreceived_Result">
+          <Property Type="Int32" Name="Id_tbl_AccountSupport" Nullable="false" />
+          <Property Type="Int32" Name="Id_tbl_CongViec" Nullable="true" />
+          <Property Type="Int32" Name="Id_AccountTiepNhan" Nullable="true" />
+          <Property Type="DateTime" Name="NgayChuyenDen" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="NgayTiepNhan" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="NgayHoanThanhSupport" Nullable="true" Precision="23" />
+          <Property Type="String" Name="KetQuaCongViec" Nullable="true" />
+          <Property Type="String" Name="PhanCongCongViec" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="NgaySua" Nullable="true" Precision="23" />
+          <Property Type="Boolean" Name="StatusReceived" Nullable="true" />
+          <Property Type="Boolean" Name="StatusFinish" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GetAccountInGroup_Result">
+          <Property Type="Int32" Name="Id_Account" Nullable="true" />
+          <Property Type="String" Name="FullName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="UserName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Password" Nullable="true" />
+          <Property Type="Binary" Name="Avartar" Nullable="true" MaxLength="Max" />
+          <Property Type="Int32" Name="Id_DonVi_Tbl_DonVi" Nullable="true" />
+          <Property Type="Boolean" Name="Status" Nullable="true" />
+          <Property Type="Int32" Name="IdParent" Nullable="true" />
+          <Property Type="String" Name="NameParent" Nullable="true" />
+          <Property Type="Int32" Name="Level" Nullable="true" />
+          <Property Type="Int32" Name="TopLevelParent" Nullable="true" />
+          <Property Type="Int32" Name="ParentID" Nullable="true" />
+          <Property Type="Int32" Name="ChildID" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GetAllAccountSupport_OneJob_Result">
+          <Property Type="Int32" Name="Id_tbl_AccountSupport" Nullable="false" />
+          <Property Type="Int32" Name="Id_tbl_CongViec" Nullable="true" />
+          <Property Type="Int32" Name="Id_AccountTiepNhan" Nullable="true" />
+          <Property Type="DateTime" Name="NgayChuyenDen" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="NgayTiepNhan" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="NgayHoanThanhSupport" Nullable="true" Precision="23" />
+          <Property Type="String" Name="KetQuaCongViec" Nullable="true" />
+          <Property Type="String" Name="PhanCongCongViec" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="NgaySua" Nullable="true" Precision="23" />
+          <Property Type="Boolean" Name="StatusReceived" Nullable="true" />
+          <Property Type="Boolean" Name="StatusFinish" Nullable="true" />
+          <Property Type="Int32" Name="Id_Account" Nullable="false" />
+          <Property Type="String" Name="FullName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="UserName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Password" Nullable="false" />
+          <Property Type="Binary" Name="Avartar" Nullable="true" MaxLength="Max" />
+          <Property Type="Int32" Name="Id_DonVi_Tbl_DonVi" Nullable="true" />
+          <Property Type="Boolean" Name="Status" Nullable="false" />
+          <Property Type="Int32" Name="IdParent" Nullable="true" />
+          <Property Type="String" Name="NameParent" Nullable="true" />
+          <Property Type="Int32" Name="Level" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GetAllCoQuanVaDonVi_Result">
+          <Property Type="Int32" Name="Id_DonVi" Nullable="false" />
+          <Property Type="String" Name="NameDonVi" Nullable="true" />
+          <Property Type="String" Name="SoHieuDonVi" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="PrintNameDonVi" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="GetAllLinhVucBanHanh_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="CodeLinhVuc" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="NameLinhVuc" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="GetAllLoaiVanBan_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="CodeVanBan" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="NameVanBan" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="GetCreateJob_Result">
+          <Property Type="Int32" Name="Id_CongViec" Nullable="false" />
+          <Property Type="Int32" Name="Id_AccountKhoiTao" Nullable="true" />
+          <Property Type="Int32" Name="Id_AccountGiaoViec" Nullable="true" />
+          <Property Type="String" Name="SoVanBan" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="NgayPhatHanh" Nullable="true" Precision="23" />
+          <Property Type="String" Name="SoGhiSoCongVan" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="NgayNhanVanBan" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="Id_CoQuanBanHanh" Nullable="true" />
+          <Property Type="Int32" Name="Id_loaiVanBan" Nullable="true" />
+          <Property Type="Int32" Name="Id_LinhVucVanBan" Nullable="true" />
+          <Property Type="String" Name="CommentLanhDao" Nullable="true" />
+          <Property Type="String" Name="NoiDungVanBan" Nullable="true" />
+          <Property Type="DateTime" Name="NgayChiDao" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="NgayPhaiHoanThanh" Nullable="true" Precision="23" />
+          <Property Type="Boolean" Name="PhaiBaoCao" Nullable="true" />
+          <Property Type="String" Name="NguoiNhanVanBan" Nullable="true" />
+          <Property Type="String" Name="TomTatKetQua" Nullable="true" />
+          <Property Type="String" Name="TaiLieuDinhKem" Nullable="true" />
+          <Property Type="Boolean" Name="HoanThanh" Nullable="true" />
+          <Property Type="Boolean" Name="ChuaHoanThanh" Nullable="true" />
+          <Property Type="Boolean" Name="DangThucHien" Nullable="true" />
+          <Property Type="Boolean" Name="ChuaThucHien" Nullable="true" />
+          <Property Type="Boolean" Name="ThucHienCham" Nullable="true" />
+          <Property Type="Boolean" Name="KetThucCongViec" Nullable="true" />
+          <Property Type="DateTime" Name="NgayHoanThanh" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="NgayTaoCongViec" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="NgaySuaCongViec" Nullable="true" Precision="23" />
+          <Property Type="Boolean" Name="StatusForward" Nullable="true" />
+          <Property Type="Int32" Name="Id_Account" Nullable="false" />
+          <Property Type="String" Name="FullName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="UserName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Password" Nullable="false" />
+          <Property Type="Binary" Name="Avartar" Nullable="true" MaxLength="Max" />
+          <Property Type="Int32" Name="Id_DonVi_Tbl_DonVi" Nullable="true" />
+          <Property Type="Boolean" Name="Status" Nullable="false" />
+          <Property Type="Int32" Name="IdParent" Nullable="true" />
+          <Property Type="String" Name="NameParent" Nullable="true" />
+          <Property Type="Int32" Name="Level" Nullable="true" />
+          <Property Type="String" Name="NguoiKhoiTao" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="NguoiChiDao" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="GetCreateJobPhoPhong_Result">
+          <Property Type="Int32" Name="Id_CongViec" Nullable="false" />
+          <Property Type="Int32" Name="Id_AccountKhoiTao" Nullable="true" />
+          <Property Type="Int32" Name="Id_AccountGiaoViec" Nullable="true" />
+          <Property Type="String" Name="SoVanBan" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="NgayPhatHanh" Nullable="true" Precision="23" />
+          <Property Type="String" Name="SoGhiSoCongVan" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="NgayNhanVanBan" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="Id_CoQuanBanHanh" Nullable="true" />
+          <Property Type="Int32" Name="Id_loaiVanBan" Nullable="true" />
+          <Property Type="Int32" Name="Id_LinhVucVanBan" Nullable="true" />
+          <Property Type="String" Name="CommentLanhDao" Nullable="true" />
+          <Property Type="String" Name="NoiDungVanBan" Nullable="true" />
+          <Property Type="DateTime" Name="NgayChiDao" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="NgayPhaiHoanThanh" Nullable="true" Precision="23" />
+          <Property Type="Boolean" Name="PhaiBaoCao" Nullable="true" />
+          <Property Type="String" Name="NguoiNhanVanBan" Nullable="true" />
+          <Property Type="String" Name="TomTatKetQua" Nullable="true" />
+          <Property Type="String" Name="TaiLieuDinhKem" Nullable="true" />
+          <Property Type="Boolean" Name="HoanThanh" Nullable="true" />
+          <Property Type="Boolean" Name="ChuaHoanThanh" Nullable="true" />
+          <Property Type="Boolean" Name="DangThucHien" Nullable="true" />
+          <Property Type="Boolean" Name="ChuaThucHien" Nullable="true" />
+          <Property Type="Boolean" Name="ThucHienCham" Nullable="true" />
+          <Property Type="Boolean" Name="KetThucCongViec" Nullable="true" />
+          <Property Type="DateTime" Name="NgayHoanThanh" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="NgayTaoCongViec" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="NgaySuaCongViec" Nullable="true" Precision="23" />
+          <Property Type="Boolean" Name="StatusForward" Nullable="true" />
+          <Property Type="Int32" Name="Id_Account" Nullable="false" />
+          <Property Type="String" Name="FullName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="UserName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Password" Nullable="false" />
+          <Property Type="Binary" Name="Avartar" Nullable="true" MaxLength="Max" />
+          <Property Type="Int32" Name="Id_DonVi_Tbl_DonVi" Nullable="true" />
+          <Property Type="Boolean" Name="Status" Nullable="false" />
+          <Property Type="Int32" Name="IdParent" Nullable="true" />
+          <Property Type="String" Name="NameParent" Nullable="true" />
+          <Property Type="Int32" Name="Level" Nullable="true" />
+          <Property Type="String" Name="NguoiKhoiTao" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="NguoiChiDao" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="GetCreateJobTruongPhong_Result">
+          <Property Type="Int32" Name="Id_CongViec" Nullable="false" />
+          <Property Type="Int32" Name="Id_AccountKhoiTao" Nullable="true" />
+          <Property Type="Int32" Name="Id_AccountGiaoViec" Nullable="true" />
+          <Property Type="String" Name="SoVanBan" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="NgayPhatHanh" Nullable="true" Precision="23" />
+          <Property Type="String" Name="SoGhiSoCongVan" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="NgayNhanVanBan" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="Id_CoQuanBanHanh" Nullable="true" />
+          <Property Type="Int32" Name="Id_loaiVanBan" Nullable="true" />
+          <Property Type="Int32" Name="Id_LinhVucVanBan" Nullable="true" />
+          <Property Type="String" Name="CommentLanhDao" Nullable="true" />
+          <Property Type="String" Name="NoiDungVanBan" Nullable="true" />
+          <Property Type="DateTime" Name="NgayChiDao" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="NgayPhaiHoanThanh" Nullable="true" Precision="23" />
+          <Property Type="Boolean" Name="PhaiBaoCao" Nullable="true" />
+          <Property Type="String" Name="NguoiNhanVanBan" Nullable="true" />
+          <Property Type="String" Name="TomTatKetQua" Nullable="true" />
+          <Property Type="String" Name="TaiLieuDinhKem" Nullable="true" />
+          <Property Type="Boolean" Name="HoanThanh" Nullable="true" />
+          <Property Type="Boolean" Name="ChuaHoanThanh" Nullable="true" />
+          <Property Type="Boolean" Name="DangThucHien" Nullable="true" />
+          <Property Type="Boolean" Name="ChuaThucHien" Nullable="true" />
+          <Property Type="Boolean" Name="ThucHienCham" Nullable="true" />
+          <Property Type="Boolean" Name="KetThucCongViec" Nullable="true" />
+          <Property Type="DateTime" Name="NgayHoanThanh" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="NgayTaoCongViec" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="NgaySuaCongViec" Nullable="true" Precision="23" />
+          <Property Type="Boolean" Name="StatusForward" Nullable="true" />
+          <Property Type="Int32" Name="Id_Account" Nullable="false" />
+          <Property Type="String" Name="FullName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="UserName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Password" Nullable="false" />
+          <Property Type="Binary" Name="Avartar" Nullable="true" MaxLength="Max" />
+          <Property Type="Int32" Name="Id_DonVi_Tbl_DonVi" Nullable="true" />
+          <Property Type="Boolean" Name="Status" Nullable="false" />
+          <Property Type="Int32" Name="IdParent" Nullable="true" />
+          <Property Type="String" Name="NameParent" Nullable="true" />
+          <Property Type="Int32" Name="Level" Nullable="true" />
+          <Property Type="String" Name="NguoiKhoiTao" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="NguoiChiDao" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="GetForwardCreateJob_Result">
+          <Property Type="Int32" Name="Id_tbl_AccountSupport" Nullable="false" />
+          <Property Type="Int32" Name="Id_tbl_CongViec" Nullable="true" />
+          <Property Type="Int32" Name="Id_AccountTiepNhan" Nullable="true" />
+          <Property Type="DateTime" Name="NgayChuyenDen" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="NgayTiepNhan" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="NgayHoanThanhSupport" Nullable="true" Precision="23" />
+          <Property Type="String" Name="KetQuaCongViec" Nullable="true" />
+          <Property Type="String" Name="PhanCongCongViec" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="NgaySua" Nullable="true" Precision="23" />
+          <Property Type="Boolean" Name="StatusReceived" Nullable="true" />
+          <Property Type="Boolean" Name="StatusFinish" Nullable="true" />
+          <Property Type="Int32" Name="Id_Account" Nullable="false" />
+          <Property Type="String" Name="FullName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="UserName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Password" Nullable="false" />
+          <Property Type="Binary" Name="Avartar" Nullable="true" MaxLength="Max" />
+          <Property Type="Int32" Name="Id_DonVi_Tbl_DonVi" Nullable="true" />
+          <Property Type="Boolean" Name="Status" Nullable="false" />
+          <Property Type="Int32" Name="IdParent" Nullable="true" />
+          <Property Type="String" Name="NameParent" Nullable="true" />
+          <Property Type="Int32" Name="Level" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GetInfor_Result">
+          <Property Type="Int32" Name="Id_Account" Nullable="false" />
+          <Property Type="String" Name="FullName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="UserName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Password" Nullable="false" />
+          <Property Type="Binary" Name="Avartar" Nullable="true" MaxLength="Max" />
+          <Property Type="Int32" Name="Id_DonVi_Tbl_DonVi" Nullable="true" />
+          <Property Type="Boolean" Name="Status" Nullable="false" />
+          <Property Type="Int32" Name="IdParent" Nullable="true" />
+          <Property Type="String" Name="NameParent" Nullable="true" />
+          <Property Type="Int32" Name="Level" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GetOneCongViec_Result">
+          <Property Type="Int32" Name="Id_CongViec" Nullable="false" />
+          <Property Type="Int32" Name="Id_AccountKhoiTao" Nullable="true" />
+          <Property Type="Int32" Name="Id_AccountGiaoViec" Nullable="true" />
+          <Property Type="String" Name="SoVanBan" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="NgayPhatHanh" Nullable="true" Precision="23" />
+          <Property Type="String" Name="SoGhiSoCongVan" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="NgayNhanVanBan" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="Id_CoQuanBanHanh" Nullable="true" />
+          <Property Type="Int32" Name="Id_loaiVanBan" Nullable="true" />
+          <Property Type="Int32" Name="Id_LinhVucVanBan" Nullable="true" />
+          <Property Type="String" Name="CommentLanhDao" Nullable="true" />
+          <Property Type="String" Name="NoiDungVanBan" Nullable="true" />
+          <Property Type="DateTime" Name="NgayChiDao" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="NgayPhaiHoanThanh" Nullable="true" Precision="23" />
+          <Property Type="Boolean" Name="PhaiBaoCao" Nullable="true" />
+          <Property Type="String" Name="NguoiNhanVanBan" Nullable="true" />
+          <Property Type="String" Name="TomTatKetQua" Nullable="true" />
+          <Property Type="String" Name="TaiLieuDinhKem" Nullable="true" />
+          <Property Type="Boolean" Name="HoanThanh" Nullable="true" />
+          <Property Type="Boolean" Name="ChuaHoanThanh" Nullable="true" />
+          <Property Type="Boolean" Name="DangThucHien" Nullable="true" />
+          <Property Type="Boolean" Name="ChuaThucHien" Nullable="true" />
+          <Property Type="Boolean" Name="ThucHienCham" Nullable="true" />
+          <Property Type="Boolean" Name="KetThucCongViec" Nullable="true" />
+          <Property Type="DateTime" Name="NgayHoanThanh" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="NgayTaoCongViec" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="NgaySuaCongViec" Nullable="true" Precision="23" />
+          <Property Type="Boolean" Name="StatusForward" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="login_Result">
+          <Property Type="Int32" Name="Id_Account" Nullable="true" />
+          <Property Type="String" Name="FullName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="UserName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Password" Nullable="true" />
+          <Property Type="Binary" Name="Avartar" Nullable="true" MaxLength="Max" />
+          <Property Type="Int32" Name="Id_DonVi_Tbl_DonVi" Nullable="true" />
+          <Property Type="Boolean" Name="Status" Nullable="true" />
+          <Property Type="Int32" Name="IdParent" Nullable="true" />
+          <Property Type="String" Name="NameParent" Nullable="true" />
+          <Property Type="Int32" Name="Level" Nullable="true" />
+          <Property Type="Int32" Name="TopLevelParent" Nullable="true" />
+          <Property Type="Int32" Name="ParentID" Nullable="true" />
+          <Property Type="Int32" Name="ChildID" Nullable="true" />
+          <Property Type="Int32" Name="Id_DonVi" Nullable="false" />
+          <Property Type="String" Name="NameDonVi" Nullable="true" />
+          <Property Type="String" Name="SoHieuDonVi" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="PrintNameDonVi" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="NhanViec_Result">
+          <Property Type="Int32" Name="Id_tbl_AccountSupport" Nullable="false" />
+          <Property Type="Int32" Name="Id_tbl_CongViec" Nullable="true" />
+          <Property Type="Int32" Name="Id_AccountTiepNhan" Nullable="true" />
+          <Property Type="DateTime" Name="NgayChuyenDen" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="NgayTiepNhan" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="NgayHoanThanhSupport" Nullable="true" Precision="23" />
+          <Property Type="String" Name="KetQuaCongViec" Nullable="true" />
+          <Property Type="String" Name="PhanCongCongViec" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="NgaySua" Nullable="true" Precision="23" />
+          <Property Type="Boolean" Name="StatusReceived" Nullable="true" />
+          <Property Type="Boolean" Name="StatusFinish" Nullable="true" />
+          <Property Type="Int32" Name="Id_CongViec" Nullable="false" />
+          <Property Type="Int32" Name="Id_AccountKhoiTao" Nullable="true" />
+          <Property Type="Int32" Name="Id_AccountGiaoViec" Nullable="true" />
+          <Property Type="String" Name="SoVanBan" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="NgayPhatHanh" Nullable="true" Precision="23" />
+          <Property Type="String" Name="SoGhiSoCongVan" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="NgayNhanVanBan" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="Id_CoQuanBanHanh" Nullable="true" />
+          <Property Type="Int32" Name="Id_loaiVanBan" Nullable="true" />
+          <Property Type="Int32" Name="Id_LinhVucVanBan" Nullable="true" />
+          <Property Type="String" Name="CommentLanhDao" Nullable="true" />
+          <Property Type="String" Name="NoiDungVanBan" Nullable="true" />
+          <Property Type="DateTime" Name="NgayChiDao" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="NgayPhaiHoanThanh" Nullable="true" Precision="23" />
+          <Property Type="Boolean" Name="PhaiBaoCao" Nullable="true" />
+          <Property Type="String" Name="NguoiNhanVanBan" Nullable="true" />
+          <Property Type="String" Name="TomTatKetQua" Nullable="true" />
+          <Property Type="String" Name="TaiLieuDinhKem" Nullable="true" />
+          <Property Type="Boolean" Name="HoanThanh" Nullable="true" />
+          <Property Type="Boolean" Name="ChuaHoanThanh" Nullable="true" />
+          <Property Type="Boolean" Name="DangThucHien" Nullable="true" />
+          <Property Type="Boolean" Name="ChuaThucHien" Nullable="true" />
+          <Property Type="Boolean" Name="ThucHienCham" Nullable="true" />
+          <Property Type="Boolean" Name="KetThucCongViec" Nullable="true" />
+          <Property Type="DateTime" Name="NgayHoanThanh" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="NgayTaoCongViec" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="NgaySuaCongViec" Nullable="true" Precision="23" />
+          <Property Type="Boolean" Name="StatusForward" Nullable="true" />
+          <Property Type="Int32" Name="Id_Account" Nullable="false" />
+          <Property Type="String" Name="FullName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="UserName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Password" Nullable="false" />
+          <Property Type="Binary" Name="Avartar" Nullable="true" MaxLength="Max" />
+          <Property Type="Int32" Name="Id_DonVi_Tbl_DonVi" Nullable="true" />
+          <Property Type="Boolean" Name="Status" Nullable="false" />
+          <Property Type="Int32" Name="IdParent" Nullable="true" />
+          <Property Type="String" Name="NameParent" Nullable="true" />
+          <Property Type="Int32" Name="Level" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="NhanViecChiTiet_Result">
+          <Property Type="Int32" Name="Id_tbl_AccountSupport" Nullable="false" />
+          <Property Type="Int32" Name="Id_tbl_CongViec" Nullable="true" />
+          <Property Type="Int32" Name="Id_AccountTiepNhan" Nullable="true" />
+          <Property Type="DateTime" Name="NgayChuyenDen" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="NgayTiepNhan" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="NgayHoanThanhSupport" Nullable="true" Precision="23" />
+          <Property Type="String" Name="KetQuaCongViec" Nullable="true" />
+          <Property Type="String" Name="PhanCongCongViec" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="NgaySua" Nullable="true" Precision="23" />
+          <Property Type="Boolean" Name="StatusReceived" Nullable="true" />
+          <Property Type="Boolean" Name="StatusFinish" Nullable="true" />
+          <Property Type="Int32" Name="Id_CongViec" Nullable="false" />
+          <Property Type="Int32" Name="Id_AccountKhoiTao" Nullable="true" />
+          <Property Type="Int32" Name="Id_AccountGiaoViec" Nullable="true" />
+          <Property Type="String" Name="SoVanBan" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="NgayPhatHanh" Nullable="true" Precision="23" />
+          <Property Type="String" Name="SoGhiSoCongVan" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="NgayNhanVanBan" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="Id_CoQuanBanHanh" Nullable="true" />
+          <Property Type="Int32" Name="Id_loaiVanBan" Nullable="true" />
+          <Property Type="Int32" Name="Id_LinhVucVanBan" Nullable="true" />
+          <Property Type="String" Name="CommentLanhDao" Nullable="true" />
+          <Property Type="String" Name="NoiDungVanBan" Nullable="true" />
+          <Property Type="DateTime" Name="NgayChiDao" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="NgayPhaiHoanThanh" Nullable="true" Precision="23" />
+          <Property Type="Boolean" Name="PhaiBaoCao" Nullable="true" />
+          <Property Type="String" Name="NguoiNhanVanBan" Nullable="true" />
+          <Property Type="String" Name="TomTatKetQua" Nullable="true" />
+          <Property Type="String" Name="TaiLieuDinhKem" Nullable="true" />
+          <Property Type="Boolean" Name="HoanThanh" Nullable="true" />
+          <Property Type="Boolean" Name="ChuaHoanThanh" Nullable="true" />
+          <Property Type="Boolean" Name="DangThucHien" Nullable="true" />
+          <Property Type="Boolean" Name="ChuaThucHien" Nullable="true" />
+          <Property Type="Boolean" Name="ThucHienCham" Nullable="true" />
+          <Property Type="Boolean" Name="KetThucCongViec" Nullable="true" />
+          <Property Type="DateTime" Name="NgayHoanThanh" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="NgayTaoCongViec" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="NgaySuaCongViec" Nullable="true" Precision="23" />
+          <Property Type="Boolean" Name="StatusForward" Nullable="true" />
+          <Property Type="Int32" Name="Id_Account" Nullable="false" />
+          <Property Type="String" Name="FullName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="UserName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Password" Nullable="false" />
+          <Property Type="Binary" Name="Avartar" Nullable="true" MaxLength="Max" />
+          <Property Type="Int32" Name="Id_DonVi_Tbl_DonVi" Nullable="true" />
+          <Property Type="Boolean" Name="Status" Nullable="false" />
+          <Property Type="Int32" Name="IdParent" Nullable="true" />
+          <Property Type="String" Name="NameParent" Nullable="true" />
+          <Property Type="Int32" Name="Level" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="QuanlyViecNhom_Result">
+          <Property Type="Int32" Name="Id_Account" Nullable="true" />
+          <Property Type="String" Name="FullName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="UserName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Password" Nullable="true" />
+          <Property Type="Binary" Name="Avartar" Nullable="true" MaxLength="Max" />
+          <Property Type="Int32" Name="Id_DonVi_Tbl_DonVi" Nullable="true" />
+          <Property Type="Boolean" Name="Status" Nullable="true" />
+          <Property Type="Int32" Name="IdParent" Nullable="true" />
+          <Property Type="String" Name="NameParent" Nullable="true" />
+          <Property Type="Int32" Name="Level" Nullable="true" />
+          <Property Type="Int32" Name="TopLevelParent" Nullable="true" />
+          <Property Type="Int32" Name="ParentID" Nullable="true" />
+          <Property Type="Int32" Name="ChildID" Nullable="true" />
+          <Property Type="Int32" Name="Id_CongViec" Nullable="false" />
+          <Property Type="Int32" Name="Id_AccountKhoiTao" Nullable="true" />
+          <Property Type="Int32" Name="Id_AccountGiaoViec" Nullable="true" />
+          <Property Type="String" Name="SoVanBan" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="NgayPhatHanh" Nullable="true" Precision="23" />
+          <Property Type="String" Name="SoGhiSoCongVan" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="NgayNhanVanBan" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="Id_CoQuanBanHanh" Nullable="true" />
+          <Property Type="Int32" Name="Id_loaiVanBan" Nullable="true" />
+          <Property Type="Int32" Name="Id_LinhVucVanBan" Nullable="true" />
+          <Property Type="String" Name="CommentLanhDao" Nullable="true" />
+          <Property Type="String" Name="NoiDungVanBan" Nullable="true" />
+          <Property Type="DateTime" Name="NgayChiDao" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="NgayPhaiHoanThanh" Nullable="true" Precision="23" />
+          <Property Type="Boolean" Name="PhaiBaoCao" Nullable="true" />
+          <Property Type="String" Name="NguoiNhanVanBan" Nullable="true" />
+          <Property Type="String" Name="TomTatKetQua" Nullable="true" />
+          <Property Type="String" Name="TaiLieuDinhKem" Nullable="true" />
+          <Property Type="Boolean" Name="HoanThanh" Nullable="true" />
+          <Property Type="Boolean" Name="ChuaHoanThanh" Nullable="true" />
+          <Property Type="Boolean" Name="DangThucHien" Nullable="true" />
+          <Property Type="Boolean" Name="ChuaThucHien" Nullable="true" />
+          <Property Type="Boolean" Name="ThucHienCham" Nullable="true" />
+          <Property Type="Boolean" Name="KetThucCongViec" Nullable="true" />
+          <Property Type="DateTime" Name="NgayHoanThanh" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="NgayTaoCongViec" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="NgaySuaCongViec" Nullable="true" Precision="23" />
+          <Property Type="Boolean" Name="StatusForward" Nullable="true" />
+          <Property Type="Int32" Name="Id_tbl_AccountSupport" Nullable="false" />
+          <Property Type="Int32" Name="Id_tbl_CongViec" Nullable="true" />
+          <Property Type="Int32" Name="Id_AccountTiepNhan" Nullable="true" />
+          <Property Type="DateTime" Name="NgayChuyenDen" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="NgayTiepNhan" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="NgayHoanThanhSupport" Nullable="true" Precision="23" />
+          <Property Type="String" Name="KetQuaCongViec" Nullable="true" />
+          <Property Type="String" Name="PhanCongCongViec" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="NgaySua" Nullable="true" Precision="23" />
+          <Property Type="Boolean" Name="StatusReceived" Nullable="true" />
+          <Property Type="Boolean" Name="StatusFinish" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="QuanlyViecNhomChiTiet_Result">
+          <Property Type="Int32" Name="Id_Account" Nullable="true" />
+          <Property Type="String" Name="FullName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="UserName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Password" Nullable="true" />
+          <Property Type="Binary" Name="Avartar" Nullable="true" MaxLength="Max" />
+          <Property Type="Int32" Name="Id_DonVi_Tbl_DonVi" Nullable="true" />
+          <Property Type="Boolean" Name="Status" Nullable="true" />
+          <Property Type="Int32" Name="IdParent" Nullable="true" />
+          <Property Type="String" Name="NameParent" Nullable="true" />
+          <Property Type="Int32" Name="Level" Nullable="true" />
+          <Property Type="Int32" Name="TopLevelParent" Nullable="true" />
+          <Property Type="Int32" Name="ParentID" Nullable="true" />
+          <Property Type="Int32" Name="ChildID" Nullable="true" />
+          <Property Type="Int32" Name="Id_CongViec" Nullable="false" />
+          <Property Type="Int32" Name="Id_AccountKhoiTao" Nullable="true" />
+          <Property Type="Int32" Name="Id_AccountGiaoViec" Nullable="true" />
+          <Property Type="String" Name="SoVanBan" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="NgayPhatHanh" Nullable="true" Precision="23" />
+          <Property Type="String" Name="SoGhiSoCongVan" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="NgayNhanVanBan" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="Id_CoQuanBanHanh" Nullable="true" />
+          <Property Type="Int32" Name="Id_loaiVanBan" Nullable="true" />
+          <Property Type="Int32" Name="Id_LinhVucVanBan" Nullable="true" />
+          <Property Type="String" Name="CommentLanhDao" Nullable="true" />
+          <Property Type="String" Name="NoiDungVanBan" Nullable="true" />
+          <Property Type="DateTime" Name="NgayChiDao" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="NgayPhaiHoanThanh" Nullable="true" Precision="23" />
+          <Property Type="Boolean" Name="PhaiBaoCao" Nullable="true" />
+          <Property Type="String" Name="NguoiNhanVanBan" Nullable="true" />
+          <Property Type="String" Name="TomTatKetQua" Nullable="true" />
+          <Property Type="String" Name="TaiLieuDinhKem" Nullable="true" />
+          <Property Type="Boolean" Name="HoanThanh" Nullable="true" />
+          <Property Type="Boolean" Name="ChuaHoanThanh" Nullable="true" />
+          <Property Type="Boolean" Name="DangThucHien" Nullable="true" />
+          <Property Type="Boolean" Name="ChuaThucHien" Nullable="true" />
+          <Property Type="Boolean" Name="ThucHienCham" Nullable="true" />
+          <Property Type="Boolean" Name="KetThucCongViec" Nullable="true" />
+          <Property Type="DateTime" Name="NgayHoanThanh" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="NgayTaoCongViec" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="NgaySuaCongViec" Nullable="true" Precision="23" />
+          <Property Type="Boolean" Name="StatusForward" Nullable="true" />
+          <Property Type="Int32" Name="Id_tbl_AccountSupport" Nullable="false" />
+          <Property Type="Int32" Name="Id_tbl_CongViec" Nullable="true" />
+          <Property Type="Int32" Name="Id_AccountTiepNhan" Nullable="true" />
+          <Property Type="DateTime" Name="NgayChuyenDen" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="NgayTiepNhan" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="NgayHoanThanhSupport" Nullable="true" Precision="23" />
+          <Property Type="String" Name="KetQuaCongViec" Nullable="true" />
+          <Property Type="String" Name="PhanCongCongViec" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="NgaySua" Nullable="true" Precision="23" />
+          <Property Type="Boolean" Name="StatusReceived" Nullable="true" />
+          <Property Type="Boolean" Name="StatusFinish" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="ViecDaNhan_Result">
+          <Property Type="Int32" Name="Id_tbl_AccountSupport" Nullable="false" />
+          <Property Type="Int32" Name="Id_tbl_CongViec" Nullable="true" />
+          <Property Type="Int32" Name="Id_AccountTiepNhan" Nullable="true" />
+          <Property Type="DateTime" Name="NgayChuyenDen" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="NgayTiepNhan" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="NgayHoanThanhSupport" Nullable="true" Precision="23" />
+          <Property Type="String" Name="KetQuaCongViec" Nullable="true" />
+          <Property Type="String" Name="PhanCongCongViec" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="NgaySua" Nullable="true" Precision="23" />
+          <Property Type="Boolean" Name="StatusReceived" Nullable="true" />
+          <Property Type="Boolean" Name="StatusFinish" Nullable="true" />
+          <Property Type="Int32" Name="Id_CongViec" Nullable="false" />
+          <Property Type="Int32" Name="Id_AccountKhoiTao" Nullable="true" />
+          <Property Type="Int32" Name="Id_AccountGiaoViec" Nullable="true" />
+          <Property Type="String" Name="SoVanBan" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="NgayPhatHanh" Nullable="true" Precision="23" />
+          <Property Type="String" Name="SoGhiSoCongVan" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="NgayNhanVanBan" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="Id_CoQuanBanHanh" Nullable="true" />
+          <Property Type="Int32" Name="Id_loaiVanBan" Nullable="true" />
+          <Property Type="Int32" Name="Id_LinhVucVanBan" Nullable="true" />
+          <Property Type="String" Name="CommentLanhDao" Nullable="true" />
+          <Property Type="String" Name="NoiDungVanBan" Nullable="true" />
+          <Property Type="DateTime" Name="NgayChiDao" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="NgayPhaiHoanThanh" Nullable="true" Precision="23" />
+          <Property Type="Boolean" Name="PhaiBaoCao" Nullable="true" />
+          <Property Type="String" Name="NguoiNhanVanBan" Nullable="true" />
+          <Property Type="String" Name="TomTatKetQua" Nullable="true" />
+          <Property Type="String" Name="TaiLieuDinhKem" Nullable="true" />
+          <Property Type="Boolean" Name="HoanThanh" Nullable="true" />
+          <Property Type="Boolean" Name="ChuaHoanThanh" Nullable="true" />
+          <Property Type="Boolean" Name="DangThucHien" Nullable="true" />
+          <Property Type="Boolean" Name="ChuaThucHien" Nullable="true" />
+          <Property Type="Boolean" Name="ThucHienCham" Nullable="true" />
+          <Property Type="Boolean" Name="KetThucCongViec" Nullable="true" />
+          <Property Type="DateTime" Name="NgayHoanThanh" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="NgayTaoCongViec" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="NgaySuaCongViec" Nullable="true" Precision="23" />
+          <Property Type="Boolean" Name="StatusForward" Nullable="true" />
+          <Property Type="Int32" Name="Id_Account" Nullable="false" />
+          <Property Type="String" Name="FullName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="UserName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Password" Nullable="false" />
+          <Property Type="Binary" Name="Avartar" Nullable="true" MaxLength="Max" />
+          <Property Type="Int32" Name="Id_DonVi_Tbl_DonVi" Nullable="true" />
+          <Property Type="Boolean" Name="Status" Nullable="false" />
+          <Property Type="Int32" Name="IdParent" Nullable="true" />
+          <Property Type="String" Name="NameParent" Nullable="true" />
+          <Property Type="Int32" Name="Level" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="tbl_Group_DonVi_CongViec_Result">
+          <Property Type="String" Name="FullName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="SoVanBan" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="SoGhiSoCongVan" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="CommentLanhDao" Nullable="true" />
+          <Property Type="String" Name="NoiDungVanBan" Nullable="true" />
+          <Property Type="Int32" Name="TopLevelParent" Nullable="true" />
+          <Property Type="Int32" Name="IdCV" Nullable="false" />
+          <Property Type="Int32" Name="IdAccount" Nullable="true" />
+          <Property Type="String" Name="ketqua" Nullable="true" />
+          <Property Type="DateTime" Name="ngayhoanthanh" Nullable="true" Precision="23" />
+          <Property Type="Boolean" Name="kethuc" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GetAllDonViCongViec_Result">
+          <Property Type="String" Name="FullName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="SoVanBan" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="SoGhiSoCongVan" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="CommentLanhDao" Nullable="true" />
+          <Property Type="String" Name="NoiDungVanBan" Nullable="true" />
+          <Property Type="Int32" Name="TopLevelParent" Nullable="true" />
+          <Property Type="Int32" Name="IdCV" Nullable="false" />
+          <Property Type="Int32" Name="IdAccount" Nullable="true" />
+          <Property Type="String" Name="ketqua" Nullable="true" />
+          <Property Type="DateTime" Name="ngayhoanthanh" Nullable="true" Precision="23" />
+          <Property Type="Boolean" Name="kethuc" Nullable="true" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TheoDoiVanBanModelStoreContainer" CdmEntityContainer="TheoDoiVanBanEntities">
+          <EntitySetMapping Name="tbl_Account">
+            <EntityTypeMapping TypeName="TheoDoiVanBanModel.tbl_Account">
+              <MappingFragment StoreEntitySet="tbl_Account">
+                <ScalarProperty Name="Id_Account" ColumnName="Id_Account" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Avartar" ColumnName="Avartar" />
+                <ScalarProperty Name="Id_DonVi_Tbl_DonVi" ColumnName="Id_DonVi_Tbl_DonVi" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="IdParent" ColumnName="IdParent" />
+                <ScalarProperty Name="NameParent" ColumnName="NameParent" />
+                <ScalarProperty Name="Level" ColumnName="Level" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_AccountSupport">
+            <EntityTypeMapping TypeName="TheoDoiVanBanModel.tbl_AccountSupport">
+              <MappingFragment StoreEntitySet="tbl_AccountSupport">
+                <ScalarProperty Name="Id_tbl_AccountSupport" ColumnName="Id_tbl_AccountSupport" />
+                <ScalarProperty Name="Id_tbl_CongViec" ColumnName="Id_tbl_CongViec" />
+                <ScalarProperty Name="Id_AccountTiepNhan" ColumnName="Id_AccountTiepNhan" />
+                <ScalarProperty Name="NgayChuyenDen" ColumnName="NgayChuyenDen" />
+                <ScalarProperty Name="NgayTiepNhan" ColumnName="NgayTiepNhan" />
+                <ScalarProperty Name="NgayHoanThanhSupport" ColumnName="NgayHoanThanhSupport" />
+                <ScalarProperty Name="KetQuaCongViec" ColumnName="KetQuaCongViec" />
+                <ScalarProperty Name="PhanCongCongViec" ColumnName="PhanCongCongViec" />
+                <ScalarProperty Name="NgaySua" ColumnName="NgaySua" />
+                <ScalarProperty Name="StatusReceived" ColumnName="StatusReceived" />
+                <ScalarProperty Name="StatusFinish" ColumnName="StatusFinish" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_CongViec">
+            <EntityTypeMapping TypeName="TheoDoiVanBanModel.tbl_CongViec">
+              <MappingFragment StoreEntitySet="tbl_CongViec">
+                <ScalarProperty Name="Id_CongViec" ColumnName="Id_CongViec" />
+                <ScalarProperty Name="Id_AccountKhoiTao" ColumnName="Id_AccountKhoiTao" />
+                <ScalarProperty Name="Id_AccountGiaoViec" ColumnName="Id_AccountGiaoViec" />
+                <ScalarProperty Name="SoVanBan" ColumnName="SoVanBan" />
+                <ScalarProperty Name="NgayPhatHanh" ColumnName="NgayPhatHanh" />
+                <ScalarProperty Name="SoGhiSoCongVan" ColumnName="SoGhiSoCongVan" />
+                <ScalarProperty Name="NgayNhanVanBan" ColumnName="NgayNhanVanBan" />
+                <ScalarProperty Name="Id_CoQuanBanHanh" ColumnName="Id_CoQuanBanHanh" />
+                <ScalarProperty Name="Id_loaiVanBan" ColumnName="Id_loaiVanBan" />
+                <ScalarProperty Name="Id_LinhVucVanBan" ColumnName="Id_LinhVucVanBan" />
+                <ScalarProperty Name="CommentLanhDao" ColumnName="CommentLanhDao" />
+                <ScalarProperty Name="NoiDungVanBan" ColumnName="NoiDungVanBan" />
+                <ScalarProperty Name="NgayChiDao" ColumnName="NgayChiDao" />
+                <ScalarProperty Name="NgayPhaiHoanThanh" ColumnName="NgayPhaiHoanThanh" />
+                <ScalarProperty Name="PhaiBaoCao" ColumnName="PhaiBaoCao" />
+                <ScalarProperty Name="NguoiNhanVanBan" ColumnName="NguoiNhanVanBan" />
+                <ScalarProperty Name="TomTatKetQua" ColumnName="TomTatKetQua" />
+                <ScalarProperty Name="TaiLieuDinhKem" ColumnName="TaiLieuDinhKem" />
+                <ScalarProperty Name="HoanThanh" ColumnName="HoanThanh" />
+                <ScalarProperty Name="ChuaHoanThanh" ColumnName="ChuaHoanThanh" />
+                <ScalarProperty Name="DangThucHien" ColumnName="DangThucHien" />
+                <ScalarProperty Name="ChuaThucHien" ColumnName="ChuaThucHien" />
+                <ScalarProperty Name="ThucHienCham" ColumnName="ThucHienCham" />
+                <ScalarProperty Name="KetThucCongViec" ColumnName="KetThucCongViec" />
+                <ScalarProperty Name="NgayHoanThanh" ColumnName="NgayHoanThanh" />
+                <ScalarProperty Name="NgayTaoCongViec" ColumnName="NgayTaoCongViec" />
+                <ScalarProperty Name="NgaySuaCongViec" ColumnName="NgaySuaCongViec" />
+                <ScalarProperty Name="StatusForward" ColumnName="StatusForward" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_CoQuanBanHanh">
+            <EntityTypeMapping TypeName="TheoDoiVanBanModel.tbl_CoQuanBanHanh">
+              <MappingFragment StoreEntitySet="tbl_CoQuanBanHanh">
+                <ScalarProperty Name="Id_CoQuanBanHanh" ColumnName="Id_CoQuanBanHanh" />
+                <ScalarProperty Name="TenCoQuan" ColumnName="TenCoQuan" />
+                <ScalarProperty Name="SoHieuCoQuan" ColumnName="SoHieuCoQuan" />
+                <ScalarProperty Name="PrintName" ColumnName="PrintName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Donvi">
+            <EntityTypeMapping TypeName="TheoDoiVanBanModel.tbl_Donvi">
+              <MappingFragment StoreEntitySet="tbl_Donvi">
+                <ScalarProperty Name="Id_DonVi" ColumnName="Id_DonVi" />
+                <ScalarProperty Name="NameDonVi" ColumnName="NameDonVi" />
+                <ScalarProperty Name="SoHieuDonVi" ColumnName="SoHieuDonVi" />
+                <ScalarProperty Name="PrintNameDonVi" ColumnName="PrintNameDonVi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_LinhVucBanHanh">
+            <EntityTypeMapping TypeName="TheoDoiVanBanModel.tbl_LinhVucBanHanh">
+              <MappingFragment StoreEntitySet="tbl_LinhVucBanHanh">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CodeLinhVuc" ColumnName="CodeLinhVuc" />
+                <ScalarProperty Name="NameLinhVuc" ColumnName="NameLinhVuc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_LoaiVanBan">
+            <EntityTypeMapping TypeName="TheoDoiVanBanModel.tbl_LoaiVanBan">
+              <MappingFragment StoreEntitySet="tbl_LoaiVanBan">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CodeVanBan" ColumnName="CodeVanBan" />
+                <ScalarProperty Name="NameVanBan" ColumnName="NameVanBan" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ViewDonViVaCoQuan">
+            <EntityTypeMapping TypeName="TheoDoiVanBanModel.ViewDonViVaCoQuan">
+              <MappingFragment StoreEntitySet="ViewDonViVaCoQuan">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="SoHieu" ColumnName="SoHieu" />
+                <ScalarProperty Name="PrintName" ColumnName="PrintName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="AddLinhVucBanHanh" FunctionName="TheoDoiVanBanModel.Store.AddLinhVucBanHanh" />
+          <FunctionImportMapping FunctionImportName="AddLoaiVanBan" FunctionName="TheoDoiVanBanModel.Store.AddLoaiVanBan" />
+          <FunctionImportMapping FunctionImportName="checkreceived" FunctionName="TheoDoiVanBanModel.Store.checkreceived">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TheoDoiVanBanModel.checkreceived_Result">
+                <ScalarProperty Name="Id_tbl_AccountSupport" ColumnName="Id_tbl_AccountSupport" />
+                <ScalarProperty Name="Id_tbl_CongViec" ColumnName="Id_tbl_CongViec" />
+                <ScalarProperty Name="Id_AccountTiepNhan" ColumnName="Id_AccountTiepNhan" />
+                <ScalarProperty Name="NgayChuyenDen" ColumnName="NgayChuyenDen" />
+                <ScalarProperty Name="NgayTiepNhan" ColumnName="NgayTiepNhan" />
+                <ScalarProperty Name="NgayHoanThanhSupport" ColumnName="NgayHoanThanhSupport" />
+                <ScalarProperty Name="KetQuaCongViec" ColumnName="KetQuaCongViec" />
+                <ScalarProperty Name="PhanCongCongViec" ColumnName="PhanCongCongViec" />
+                <ScalarProperty Name="NgaySua" ColumnName="NgaySua" />
+                <ScalarProperty Name="StatusReceived" ColumnName="StatusReceived" />
+                <ScalarProperty Name="StatusFinish" ColumnName="StatusFinish" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="CreateJob" FunctionName="TheoDoiVanBanModel.Store.CreateJob" />
+          <FunctionImportMapping FunctionImportName="DeleteCreateJob" FunctionName="TheoDoiVanBanModel.Store.DeleteCreateJob" />
+          <FunctionImportMapping FunctionImportName="DeleteLinhVucBanHanh" FunctionName="TheoDoiVanBanModel.Store.DeleteLinhVucBanHanh" />
+          <FunctionImportMapping FunctionImportName="DeleteLoaiVanBan" FunctionName="TheoDoiVanBanModel.Store.DeleteLoaiVanBan" />
+          <FunctionImportMapping FunctionImportName="EditCreateJob" FunctionName="TheoDoiVanBanModel.Store.EditCreateJob" />
+          <FunctionImportMapping FunctionImportName="EditLinhVucBanHanh" FunctionName="TheoDoiVanBanModel.Store.EditLinhVucBanHanh" />
+          <FunctionImportMapping FunctionImportName="EditLoaiVanBan" FunctionName="TheoDoiVanBanModel.Store.EditLoaiVanBan" />
+          <FunctionImportMapping FunctionImportName="EnableStatusforward" FunctionName="TheoDoiVanBanModel.Store.EnableStatusforward" />
+          <FunctionImportMapping FunctionImportName="GetAccountInGroup" FunctionName="TheoDoiVanBanModel.Store.GetAccountInGroup">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TheoDoiVanBanModel.GetAccountInGroup_Result">
+                <ScalarProperty Name="Id_Account" ColumnName="Id_Account" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Avartar" ColumnName="Avartar" />
+                <ScalarProperty Name="Id_DonVi_Tbl_DonVi" ColumnName="Id_DonVi_Tbl_DonVi" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="IdParent" ColumnName="IdParent" />
+                <ScalarProperty Name="NameParent" ColumnName="NameParent" />
+                <ScalarProperty Name="Level" ColumnName="Level" />
+                <ScalarProperty Name="TopLevelParent" ColumnName="TopLevelParent" />
+                <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+                <ScalarProperty Name="ChildID" ColumnName="ChildID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetAllAccountSupport_OneJob" FunctionName="TheoDoiVanBanModel.Store.GetAllAccountSupport_OneJob">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TheoDoiVanBanModel.GetAllAccountSupport_OneJob_Result">
+                <ScalarProperty Name="Id_tbl_AccountSupport" ColumnName="Id_tbl_AccountSupport" />
+                <ScalarProperty Name="Id_tbl_CongViec" ColumnName="Id_tbl_CongViec" />
+                <ScalarProperty Name="Id_AccountTiepNhan" ColumnName="Id_AccountTiepNhan" />
+                <ScalarProperty Name="NgayChuyenDen" ColumnName="NgayChuyenDen" />
+                <ScalarProperty Name="NgayTiepNhan" ColumnName="NgayTiepNhan" />
+                <ScalarProperty Name="NgayHoanThanhSupport" ColumnName="NgayHoanThanhSupport" />
+                <ScalarProperty Name="KetQuaCongViec" ColumnName="KetQuaCongViec" />
+                <ScalarProperty Name="PhanCongCongViec" ColumnName="PhanCongCongViec" />
+                <ScalarProperty Name="NgaySua" ColumnName="NgaySua" />
+                <ScalarProperty Name="StatusReceived" ColumnName="StatusReceived" />
+                <ScalarProperty Name="StatusFinish" ColumnName="StatusFinish" />
+                <ScalarProperty Name="Id_Account" ColumnName="Id_Account" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Avartar" ColumnName="Avartar" />
+                <ScalarProperty Name="Id_DonVi_Tbl_DonVi" ColumnName="Id_DonVi_Tbl_DonVi" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="IdParent" ColumnName="IdParent" />
+                <ScalarProperty Name="NameParent" ColumnName="NameParent" />
+                <ScalarProperty Name="Level" ColumnName="Level" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetAllCoQuanVaDonVi" FunctionName="TheoDoiVanBanModel.Store.GetAllCoQuanVaDonVi">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TheoDoiVanBanModel.GetAllCoQuanVaDonVi_Result">
+                <ScalarProperty Name="Id_DonVi" ColumnName="Id_DonVi" />
+                <ScalarProperty Name="NameDonVi" ColumnName="NameDonVi" />
+                <ScalarProperty Name="SoHieuDonVi" ColumnName="SoHieuDonVi" />
+                <ScalarProperty Name="PrintNameDonVi" ColumnName="PrintNameDonVi" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetAllLinhVucBanHanh" FunctionName="TheoDoiVanBanModel.Store.GetAllLinhVucBanHanh">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TheoDoiVanBanModel.GetAllLinhVucBanHanh_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CodeLinhVuc" ColumnName="CodeLinhVuc" />
+                <ScalarProperty Name="NameLinhVuc" ColumnName="NameLinhVuc" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetAllLoaiVanBan" FunctionName="TheoDoiVanBanModel.Store.GetAllLoaiVanBan">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TheoDoiVanBanModel.GetAllLoaiVanBan_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CodeVanBan" ColumnName="CodeVanBan" />
+                <ScalarProperty Name="NameVanBan" ColumnName="NameVanBan" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetCreateJob" FunctionName="TheoDoiVanBanModel.Store.GetCreateJob">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TheoDoiVanBanModel.GetCreateJob_Result">
+                <ScalarProperty Name="Id_CongViec" ColumnName="Id_CongViec" />
+                <ScalarProperty Name="Id_AccountKhoiTao" ColumnName="Id_AccountKhoiTao" />
+                <ScalarProperty Name="Id_AccountGiaoViec" ColumnName="Id_AccountGiaoViec" />
+                <ScalarProperty Name="SoVanBan" ColumnName="SoVanBan" />
+                <ScalarProperty Name="NgayPhatHanh" ColumnName="NgayPhatHanh" />
+                <ScalarProperty Name="SoGhiSoCongVan" ColumnName="SoGhiSoCongVan" />
+                <ScalarProperty Name="NgayNhanVanBan" ColumnName="NgayNhanVanBan" />
+                <ScalarProperty Name="Id_CoQuanBanHanh" ColumnName="Id_CoQuanBanHanh" />
+                <ScalarProperty Name="Id_loaiVanBan" ColumnName="Id_loaiVanBan" />
+                <ScalarProperty Name="Id_LinhVucVanBan" ColumnName="Id_LinhVucVanBan" />
+                <ScalarProperty Name="CommentLanhDao" ColumnName="CommentLanhDao" />
+                <ScalarProperty Name="NoiDungVanBan" ColumnName="NoiDungVanBan" />
+                <ScalarProperty Name="NgayChiDao" ColumnName="NgayChiDao" />
+                <ScalarProperty Name="NgayPhaiHoanThanh" ColumnName="NgayPhaiHoanThanh" />
+                <ScalarProperty Name="PhaiBaoCao" ColumnName="PhaiBaoCao" />
+                <ScalarProperty Name="NguoiNhanVanBan" ColumnName="NguoiNhanVanBan" />
+                <ScalarProperty Name="TomTatKetQua" ColumnName="TomTatKetQua" />
+                <ScalarProperty Name="TaiLieuDinhKem" ColumnName="TaiLieuDinhKem" />
+                <ScalarProperty Name="HoanThanh" ColumnName="HoanThanh" />
+                <ScalarProperty Name="ChuaHoanThanh" ColumnName="ChuaHoanThanh" />
+                <ScalarProperty Name="DangThucHien" ColumnName="DangThucHien" />
+                <ScalarProperty Name="ChuaThucHien" ColumnName="ChuaThucHien" />
+                <ScalarProperty Name="ThucHienCham" ColumnName="ThucHienCham" />
+                <ScalarProperty Name="KetThucCongViec" ColumnName="KetThucCongViec" />
+                <ScalarProperty Name="NgayHoanThanh" ColumnName="NgayHoanThanh" />
+                <ScalarProperty Name="NgayTaoCongViec" ColumnName="NgayTaoCongViec" />
+                <ScalarProperty Name="NgaySuaCongViec" ColumnName="NgaySuaCongViec" />
+                <ScalarProperty Name="StatusForward" ColumnName="StatusForward" />
+                <ScalarProperty Name="Id_Account" ColumnName="Id_Account" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Avartar" ColumnName="Avartar" />
+                <ScalarProperty Name="Id_DonVi_Tbl_DonVi" ColumnName="Id_DonVi_Tbl_DonVi" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="IdParent" ColumnName="IdParent" />
+                <ScalarProperty Name="NameParent" ColumnName="NameParent" />
+                <ScalarProperty Name="Level" ColumnName="Level" />
+                <ScalarProperty Name="NguoiKhoiTao" ColumnName="NguoiKhoiTao" />
+                <ScalarProperty Name="NguoiChiDao" ColumnName="NguoiChiDao" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetCreateJobPhoPhong" FunctionName="TheoDoiVanBanModel.Store.GetCreateJobPhoPhong">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TheoDoiVanBanModel.GetCreateJobPhoPhong_Result">
+                <ScalarProperty Name="Id_CongViec" ColumnName="Id_CongViec" />
+                <ScalarProperty Name="Id_AccountKhoiTao" ColumnName="Id_AccountKhoiTao" />
+                <ScalarProperty Name="Id_AccountGiaoViec" ColumnName="Id_AccountGiaoViec" />
+                <ScalarProperty Name="SoVanBan" ColumnName="SoVanBan" />
+                <ScalarProperty Name="NgayPhatHanh" ColumnName="NgayPhatHanh" />
+                <ScalarProperty Name="SoGhiSoCongVan" ColumnName="SoGhiSoCongVan" />
+                <ScalarProperty Name="NgayNhanVanBan" ColumnName="NgayNhanVanBan" />
+                <ScalarProperty Name="Id_CoQuanBanHanh" ColumnName="Id_CoQuanBanHanh" />
+                <ScalarProperty Name="Id_loaiVanBan" ColumnName="Id_loaiVanBan" />
+                <ScalarProperty Name="Id_LinhVucVanBan" ColumnName="Id_LinhVucVanBan" />
+                <ScalarProperty Name="CommentLanhDao" ColumnName="CommentLanhDao" />
+                <ScalarProperty Name="NoiDungVanBan" ColumnName="NoiDungVanBan" />
+                <ScalarProperty Name="NgayChiDao" ColumnName="NgayChiDao" />
+                <ScalarProperty Name="NgayPhaiHoanThanh" ColumnName="NgayPhaiHoanThanh" />
+                <ScalarProperty Name="PhaiBaoCao" ColumnName="PhaiBaoCao" />
+                <ScalarProperty Name="NguoiNhanVanBan" ColumnName="NguoiNhanVanBan" />
+                <ScalarProperty Name="TomTatKetQua" ColumnName="TomTatKetQua" />
+                <ScalarProperty Name="TaiLieuDinhKem" ColumnName="TaiLieuDinhKem" />
+                <ScalarProperty Name="HoanThanh" ColumnName="HoanThanh" />
+                <ScalarProperty Name="ChuaHoanThanh" ColumnName="ChuaHoanThanh" />
+                <ScalarProperty Name="DangThucHien" ColumnName="DangThucHien" />
+                <ScalarProperty Name="ChuaThucHien" ColumnName="ChuaThucHien" />
+                <ScalarProperty Name="ThucHienCham" ColumnName="ThucHienCham" />
+                <ScalarProperty Name="KetThucCongViec" ColumnName="KetThucCongViec" />
+                <ScalarProperty Name="NgayHoanThanh" ColumnName="NgayHoanThanh" />
+                <ScalarProperty Name="NgayTaoCongViec" ColumnName="NgayTaoCongViec" />
+                <ScalarProperty Name="NgaySuaCongViec" ColumnName="NgaySuaCongViec" />
+                <ScalarProperty Name="StatusForward" ColumnName="StatusForward" />
+                <ScalarProperty Name="Id_Account" ColumnName="Id_Account" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Avartar" ColumnName="Avartar" />
+                <ScalarProperty Name="Id_DonVi_Tbl_DonVi" ColumnName="Id_DonVi_Tbl_DonVi" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="IdParent" ColumnName="IdParent" />
+                <ScalarProperty Name="NameParent" ColumnName="NameParent" />
+                <ScalarProperty Name="Level" ColumnName="Level" />
+                <ScalarProperty Name="NguoiKhoiTao" ColumnName="NguoiKhoiTao" />
+                <ScalarProperty Name="NguoiChiDao" ColumnName="NguoiChiDao" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetCreateJobTruongPhong" FunctionName="TheoDoiVanBanModel.Store.GetCreateJobTruongPhong">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TheoDoiVanBanModel.GetCreateJobTruongPhong_Result">
+                <ScalarProperty Name="Id_CongViec" ColumnName="Id_CongViec" />
+                <ScalarProperty Name="Id_AccountKhoiTao" ColumnName="Id_AccountKhoiTao" />
+                <ScalarProperty Name="Id_AccountGiaoViec" ColumnName="Id_AccountGiaoViec" />
+                <ScalarProperty Name="SoVanBan" ColumnName="SoVanBan" />
+                <ScalarProperty Name="NgayPhatHanh" ColumnName="NgayPhatHanh" />
+                <ScalarProperty Name="SoGhiSoCongVan" ColumnName="SoGhiSoCongVan" />
+                <ScalarProperty Name="NgayNhanVanBan" ColumnName="NgayNhanVanBan" />
+                <ScalarProperty Name="Id_CoQuanBanHanh" ColumnName="Id_CoQuanBanHanh" />
+                <ScalarProperty Name="Id_loaiVanBan" ColumnName="Id_loaiVanBan" />
+                <ScalarProperty Name="Id_LinhVucVanBan" ColumnName="Id_LinhVucVanBan" />
+                <ScalarProperty Name="CommentLanhDao" ColumnName="CommentLanhDao" />
+                <ScalarProperty Name="NoiDungVanBan" ColumnName="NoiDungVanBan" />
+                <ScalarProperty Name="NgayChiDao" ColumnName="NgayChiDao" />
+                <ScalarProperty Name="NgayPhaiHoanThanh" ColumnName="NgayPhaiHoanThanh" />
+                <ScalarProperty Name="PhaiBaoCao" ColumnName="PhaiBaoCao" />
+                <ScalarProperty Name="NguoiNhanVanBan" ColumnName="NguoiNhanVanBan" />
+                <ScalarProperty Name="TomTatKetQua" ColumnName="TomTatKetQua" />
+                <ScalarProperty Name="TaiLieuDinhKem" ColumnName="TaiLieuDinhKem" />
+                <ScalarProperty Name="HoanThanh" ColumnName="HoanThanh" />
+                <ScalarProperty Name="ChuaHoanThanh" ColumnName="ChuaHoanThanh" />
+                <ScalarProperty Name="DangThucHien" ColumnName="DangThucHien" />
+                <ScalarProperty Name="ChuaThucHien" ColumnName="ChuaThucHien" />
+                <ScalarProperty Name="ThucHienCham" ColumnName="ThucHienCham" />
+                <ScalarProperty Name="KetThucCongViec" ColumnName="KetThucCongViec" />
+                <ScalarProperty Name="NgayHoanThanh" ColumnName="NgayHoanThanh" />
+                <ScalarProperty Name="NgayTaoCongViec" ColumnName="NgayTaoCongViec" />
+                <ScalarProperty Name="NgaySuaCongViec" ColumnName="NgaySuaCongViec" />
+                <ScalarProperty Name="StatusForward" ColumnName="StatusForward" />
+                <ScalarProperty Name="Id_Account" ColumnName="Id_Account" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Avartar" ColumnName="Avartar" />
+                <ScalarProperty Name="Id_DonVi_Tbl_DonVi" ColumnName="Id_DonVi_Tbl_DonVi" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="IdParent" ColumnName="IdParent" />
+                <ScalarProperty Name="NameParent" ColumnName="NameParent" />
+                <ScalarProperty Name="Level" ColumnName="Level" />
+                <ScalarProperty Name="NguoiKhoiTao" ColumnName="NguoiKhoiTao" />
+                <ScalarProperty Name="NguoiChiDao" ColumnName="NguoiChiDao" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetForwardCreateJob" FunctionName="TheoDoiVanBanModel.Store.GetForwardCreateJob">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TheoDoiVanBanModel.GetForwardCreateJob_Result">
+                <ScalarProperty Name="Id_tbl_AccountSupport" ColumnName="Id_tbl_AccountSupport" />
+                <ScalarProperty Name="Id_tbl_CongViec" ColumnName="Id_tbl_CongViec" />
+                <ScalarProperty Name="Id_AccountTiepNhan" ColumnName="Id_AccountTiepNhan" />
+                <ScalarProperty Name="NgayChuyenDen" ColumnName="NgayChuyenDen" />
+                <ScalarProperty Name="NgayTiepNhan" ColumnName="NgayTiepNhan" />
+                <ScalarProperty Name="NgayHoanThanhSupport" ColumnName="NgayHoanThanhSupport" />
+                <ScalarProperty Name="KetQuaCongViec" ColumnName="KetQuaCongViec" />
+                <ScalarProperty Name="PhanCongCongViec" ColumnName="PhanCongCongViec" />
+                <ScalarProperty Name="NgaySua" ColumnName="NgaySua" />
+                <ScalarProperty Name="StatusReceived" ColumnName="StatusReceived" />
+                <ScalarProperty Name="StatusFinish" ColumnName="StatusFinish" />
+                <ScalarProperty Name="Id_Account" ColumnName="Id_Account" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Avartar" ColumnName="Avartar" />
+                <ScalarProperty Name="Id_DonVi_Tbl_DonVi" ColumnName="Id_DonVi_Tbl_DonVi" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="IdParent" ColumnName="IdParent" />
+                <ScalarProperty Name="NameParent" ColumnName="NameParent" />
+                <ScalarProperty Name="Level" ColumnName="Level" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetInfor" FunctionName="TheoDoiVanBanModel.Store.GetInfor">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TheoDoiVanBanModel.GetInfor_Result">
+                <ScalarProperty Name="Id_Account" ColumnName="Id_Account" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Avartar" ColumnName="Avartar" />
+                <ScalarProperty Name="Id_DonVi_Tbl_DonVi" ColumnName="Id_DonVi_Tbl_DonVi" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="IdParent" ColumnName="IdParent" />
+                <ScalarProperty Name="NameParent" ColumnName="NameParent" />
+                <ScalarProperty Name="Level" ColumnName="Level" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetOneCongViec" FunctionName="TheoDoiVanBanModel.Store.GetOneCongViec">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TheoDoiVanBanModel.GetOneCongViec_Result">
+                <ScalarProperty Name="Id_CongViec" ColumnName="Id_CongViec" />
+                <ScalarProperty Name="Id_AccountKhoiTao" ColumnName="Id_AccountKhoiTao" />
+                <ScalarProperty Name="Id_AccountGiaoViec" ColumnName="Id_AccountGiaoViec" />
+                <ScalarProperty Name="SoVanBan" ColumnName="SoVanBan" />
+                <ScalarProperty Name="NgayPhatHanh" ColumnName="NgayPhatHanh" />
+                <ScalarProperty Name="SoGhiSoCongVan" ColumnName="SoGhiSoCongVan" />
+                <ScalarProperty Name="NgayNhanVanBan" ColumnName="NgayNhanVanBan" />
+                <ScalarProperty Name="Id_CoQuanBanHanh" ColumnName="Id_CoQuanBanHanh" />
+                <ScalarProperty Name="Id_loaiVanBan" ColumnName="Id_loaiVanBan" />
+                <ScalarProperty Name="Id_LinhVucVanBan" ColumnName="Id_LinhVucVanBan" />
+                <ScalarProperty Name="CommentLanhDao" ColumnName="CommentLanhDao" />
+                <ScalarProperty Name="NoiDungVanBan" ColumnName="NoiDungVanBan" />
+                <ScalarProperty Name="NgayChiDao" ColumnName="NgayChiDao" />
+                <ScalarProperty Name="NgayPhaiHoanThanh" ColumnName="NgayPhaiHoanThanh" />
+                <ScalarProperty Name="PhaiBaoCao" ColumnName="PhaiBaoCao" />
+                <ScalarProperty Name="NguoiNhanVanBan" ColumnName="NguoiNhanVanBan" />
+                <ScalarProperty Name="TomTatKetQua" ColumnName="TomTatKetQua" />
+                <ScalarProperty Name="TaiLieuDinhKem" ColumnName="TaiLieuDinhKem" />
+                <ScalarProperty Name="HoanThanh" ColumnName="HoanThanh" />
+                <ScalarProperty Name="ChuaHoanThanh" ColumnName="ChuaHoanThanh" />
+                <ScalarProperty Name="DangThucHien" ColumnName="DangThucHien" />
+                <ScalarProperty Name="ChuaThucHien" ColumnName="ChuaThucHien" />
+                <ScalarProperty Name="ThucHienCham" ColumnName="ThucHienCham" />
+                <ScalarProperty Name="KetThucCongViec" ColumnName="KetThucCongViec" />
+                <ScalarProperty Name="NgayHoanThanh" ColumnName="NgayHoanThanh" />
+                <ScalarProperty Name="NgayTaoCongViec" ColumnName="NgayTaoCongViec" />
+                <ScalarProperty Name="NgaySuaCongViec" ColumnName="NgaySuaCongViec" />
+                <ScalarProperty Name="StatusForward" ColumnName="StatusForward" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GiaoViecChinh" FunctionName="TheoDoiVanBanModel.Store.GiaoViecChinh" />
+          <FunctionImportMapping FunctionImportName="GiaoViecHoTro" FunctionName="TheoDoiVanBanModel.Store.GiaoViecHoTro" />
+          <FunctionImportMapping FunctionImportName="HoanThanhCongViec" FunctionName="TheoDoiVanBanModel.Store.HoanThanhCongViec" />
+          <FunctionImportMapping FunctionImportName="login" FunctionName="TheoDoiVanBanModel.Store.login">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TheoDoiVanBanModel.login_Result">
+                <ScalarProperty Name="Id_Account" ColumnName="Id_Account" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Avartar" ColumnName="Avartar" />
+                <ScalarProperty Name="Id_DonVi_Tbl_DonVi" ColumnName="Id_DonVi_Tbl_DonVi" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="IdParent" ColumnName="IdParent" />
+                <ScalarProperty Name="NameParent" ColumnName="NameParent" />
+                <ScalarProperty Name="Level" ColumnName="Level" />
+                <ScalarProperty Name="TopLevelParent" ColumnName="TopLevelParent" />
+                <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+                <ScalarProperty Name="ChildID" ColumnName="ChildID" />
+                <ScalarProperty Name="Id_DonVi" ColumnName="Id_DonVi" />
+                <ScalarProperty Name="NameDonVi" ColumnName="NameDonVi" />
+                <ScalarProperty Name="SoHieuDonVi" ColumnName="SoHieuDonVi" />
+                <ScalarProperty Name="PrintNameDonVi" ColumnName="PrintNameDonVi" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="NhanViec" FunctionName="TheoDoiVanBanModel.Store.NhanViec">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TheoDoiVanBanModel.NhanViec_Result">
+                <ScalarProperty Name="Id_tbl_AccountSupport" ColumnName="Id_tbl_AccountSupport" />
+                <ScalarProperty Name="Id_tbl_CongViec" ColumnName="Id_tbl_CongViec" />
+                <ScalarProperty Name="Id_AccountTiepNhan" ColumnName="Id_AccountTiepNhan" />
+                <ScalarProperty Name="NgayChuyenDen" ColumnName="NgayChuyenDen" />
+                <ScalarProperty Name="NgayTiepNhan" ColumnName="NgayTiepNhan" />
+                <ScalarProperty Name="NgayHoanThanhSupport" ColumnName="NgayHoanThanhSupport" />
+                <ScalarProperty Name="KetQuaCongViec" ColumnName="KetQuaCongViec" />
+                <ScalarProperty Name="PhanCongCongViec" ColumnName="PhanCongCongViec" />
+                <ScalarProperty Name="NgaySua" ColumnName="NgaySua" />
+                <ScalarProperty Name="StatusReceived" ColumnName="StatusReceived" />
+                <ScalarProperty Name="StatusFinish" ColumnName="StatusFinish" />
+                <ScalarProperty Name="Id_CongViec" ColumnName="Id_CongViec" />
+                <ScalarProperty Name="Id_AccountKhoiTao" ColumnName="Id_AccountKhoiTao" />
+                <ScalarProperty Name="Id_AccountGiaoViec" ColumnName="Id_AccountGiaoViec" />
+                <ScalarProperty Name="SoVanBan" ColumnName="SoVanBan" />
+                <ScalarProperty Name="NgayPhatHanh" ColumnName="NgayPhatHanh" />
+                <ScalarProperty Name="SoGhiSoCongVan" ColumnName="SoGhiSoCongVan" />
+                <ScalarProperty Name="NgayNhanVanBan" ColumnName="NgayNhanVanBan" />
+                <ScalarProperty Name="Id_CoQuanBanHanh" ColumnName="Id_CoQuanBanHanh" />
+                <ScalarProperty Name="Id_loaiVanBan" ColumnName="Id_loaiVanBan" />
+                <ScalarProperty Name="Id_LinhVucVanBan" ColumnName="Id_LinhVucVanBan" />
+                <ScalarProperty Name="CommentLanhDao" ColumnName="CommentLanhDao" />
+                <ScalarProperty Name="NoiDungVanBan" ColumnName="NoiDungVanBan" />
+                <ScalarProperty Name="NgayChiDao" ColumnName="NgayChiDao" />
+                <ScalarProperty Name="NgayPhaiHoanThanh" ColumnName="NgayPhaiHoanThanh" />
+                <ScalarProperty Name="PhaiBaoCao" ColumnName="PhaiBaoCao" />
+                <ScalarProperty Name="NguoiNhanVanBan" ColumnName="NguoiNhanVanBan" />
+                <ScalarProperty Name="TomTatKetQua" ColumnName="TomTatKetQua" />
+                <ScalarProperty Name="TaiLieuDinhKem" ColumnName="TaiLieuDinhKem" />
+                <ScalarProperty Name="HoanThanh" ColumnName="HoanThanh" />
+                <ScalarProperty Name="ChuaHoanThanh" ColumnName="ChuaHoanThanh" />
+                <ScalarProperty Name="DangThucHien" ColumnName="DangThucHien" />
+                <ScalarProperty Name="ChuaThucHien" ColumnName="ChuaThucHien" />
+                <ScalarProperty Name="ThucHienCham" ColumnName="ThucHienCham" />
+                <ScalarProperty Name="KetThucCongViec" ColumnName="KetThucCongViec" />
+                <ScalarProperty Name="NgayHoanThanh" ColumnName="NgayHoanThanh" />
+                <ScalarProperty Name="NgayTaoCongViec" ColumnName="NgayTaoCongViec" />
+                <ScalarProperty Name="NgaySuaCongViec" ColumnName="NgaySuaCongViec" />
+                <ScalarProperty Name="StatusForward" ColumnName="StatusForward" />
+                <ScalarProperty Name="Id_Account" ColumnName="Id_Account" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Avartar" ColumnName="Avartar" />
+                <ScalarProperty Name="Id_DonVi_Tbl_DonVi" ColumnName="Id_DonVi_Tbl_DonVi" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="IdParent" ColumnName="IdParent" />
+                <ScalarProperty Name="NameParent" ColumnName="NameParent" />
+                <ScalarProperty Name="Level" ColumnName="Level" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="NhanViecChiTiet" FunctionName="TheoDoiVanBanModel.Store.NhanViecChiTiet">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TheoDoiVanBanModel.NhanViecChiTiet_Result">
+                <ScalarProperty Name="Id_tbl_AccountSupport" ColumnName="Id_tbl_AccountSupport" />
+                <ScalarProperty Name="Id_tbl_CongViec" ColumnName="Id_tbl_CongViec" />
+                <ScalarProperty Name="Id_AccountTiepNhan" ColumnName="Id_AccountTiepNhan" />
+                <ScalarProperty Name="NgayChuyenDen" ColumnName="NgayChuyenDen" />
+                <ScalarProperty Name="NgayTiepNhan" ColumnName="NgayTiepNhan" />
+                <ScalarProperty Name="NgayHoanThanhSupport" ColumnName="NgayHoanThanhSupport" />
+                <ScalarProperty Name="KetQuaCongViec" ColumnName="KetQuaCongViec" />
+                <ScalarProperty Name="PhanCongCongViec" ColumnName="PhanCongCongViec" />
+                <ScalarProperty Name="NgaySua" ColumnName="NgaySua" />
+                <ScalarProperty Name="StatusReceived" ColumnName="StatusReceived" />
+                <ScalarProperty Name="StatusFinish" ColumnName="StatusFinish" />
+                <ScalarProperty Name="Id_CongViec" ColumnName="Id_CongViec" />
+                <ScalarProperty Name="Id_AccountKhoiTao" ColumnName="Id_AccountKhoiTao" />
+                <ScalarProperty Name="Id_AccountGiaoViec" ColumnName="Id_AccountGiaoViec" />
+                <ScalarProperty Name="SoVanBan" ColumnName="SoVanBan" />
+                <ScalarProperty Name="NgayPhatHanh" ColumnName="NgayPhatHanh" />
+                <ScalarProperty Name="SoGhiSoCongVan" ColumnName="SoGhiSoCongVan" />
+                <ScalarProperty Name="NgayNhanVanBan" ColumnName="NgayNhanVanBan" />
+                <ScalarProperty Name="Id_CoQuanBanHanh" ColumnName="Id_CoQuanBanHanh" />
+                <ScalarProperty Name="Id_loaiVanBan" ColumnName="Id_loaiVanBan" />
+                <ScalarProperty Name="Id_LinhVucVanBan" ColumnName="Id_LinhVucVanBan" />
+                <ScalarProperty Name="CommentLanhDao" ColumnName="CommentLanhDao" />
+                <ScalarProperty Name="NoiDungVanBan" ColumnName="NoiDungVanBan" />
+                <ScalarProperty Name="NgayChiDao" ColumnName="NgayChiDao" />
+                <ScalarProperty Name="NgayPhaiHoanThanh" ColumnName="NgayPhaiHoanThanh" />
+                <ScalarProperty Name="PhaiBaoCao" ColumnName="PhaiBaoCao" />
+                <ScalarProperty Name="NguoiNhanVanBan" ColumnName="NguoiNhanVanBan" />
+                <ScalarProperty Name="TomTatKetQua" ColumnName="TomTatKetQua" />
+                <ScalarProperty Name="TaiLieuDinhKem" ColumnName="TaiLieuDinhKem" />
+                <ScalarProperty Name="HoanThanh" ColumnName="HoanThanh" />
+                <ScalarProperty Name="ChuaHoanThanh" ColumnName="ChuaHoanThanh" />
+                <ScalarProperty Name="DangThucHien" ColumnName="DangThucHien" />
+                <ScalarProperty Name="ChuaThucHien" ColumnName="ChuaThucHien" />
+                <ScalarProperty Name="ThucHienCham" ColumnName="ThucHienCham" />
+                <ScalarProperty Name="KetThucCongViec" ColumnName="KetThucCongViec" />
+                <ScalarProperty Name="NgayHoanThanh" ColumnName="NgayHoanThanh" />
+                <ScalarProperty Name="NgayTaoCongViec" ColumnName="NgayTaoCongViec" />
+                <ScalarProperty Name="NgaySuaCongViec" ColumnName="NgaySuaCongViec" />
+                <ScalarProperty Name="StatusForward" ColumnName="StatusForward" />
+                <ScalarProperty Name="Id_Account" ColumnName="Id_Account" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Avartar" ColumnName="Avartar" />
+                <ScalarProperty Name="Id_DonVi_Tbl_DonVi" ColumnName="Id_DonVi_Tbl_DonVi" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="IdParent" ColumnName="IdParent" />
+                <ScalarProperty Name="NameParent" ColumnName="NameParent" />
+                <ScalarProperty Name="Level" ColumnName="Level" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="QuanlyViecNhom" FunctionName="TheoDoiVanBanModel.Store.QuanlyViecNhom">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TheoDoiVanBanModel.QuanlyViecNhom_Result">
+                <ScalarProperty Name="Id_Account" ColumnName="Id_Account" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Avartar" ColumnName="Avartar" />
+                <ScalarProperty Name="Id_DonVi_Tbl_DonVi" ColumnName="Id_DonVi_Tbl_DonVi" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="IdParent" ColumnName="IdParent" />
+                <ScalarProperty Name="NameParent" ColumnName="NameParent" />
+                <ScalarProperty Name="Level" ColumnName="Level" />
+                <ScalarProperty Name="TopLevelParent" ColumnName="TopLevelParent" />
+                <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+                <ScalarProperty Name="ChildID" ColumnName="ChildID" />
+                <ScalarProperty Name="Id_CongViec" ColumnName="Id_CongViec" />
+                <ScalarProperty Name="Id_AccountKhoiTao" ColumnName="Id_AccountKhoiTao" />
+                <ScalarProperty Name="Id_AccountGiaoViec" ColumnName="Id_AccountGiaoViec" />
+                <ScalarProperty Name="SoVanBan" ColumnName="SoVanBan" />
+                <ScalarProperty Name="NgayPhatHanh" ColumnName="NgayPhatHanh" />
+                <ScalarProperty Name="SoGhiSoCongVan" ColumnName="SoGhiSoCongVan" />
+                <ScalarProperty Name="NgayNhanVanBan" ColumnName="NgayNhanVanBan" />
+                <ScalarProperty Name="Id_CoQuanBanHanh" ColumnName="Id_CoQuanBanHanh" />
+                <ScalarProperty Name="Id_loaiVanBan" ColumnName="Id_loaiVanBan" />
+                <ScalarProperty Name="Id_LinhVucVanBan" ColumnName="Id_LinhVucVanBan" />
+                <ScalarProperty Name="CommentLanhDao" ColumnName="CommentLanhDao" />
+                <ScalarProperty Name="NoiDungVanBan" ColumnName="NoiDungVanBan" />
+                <ScalarProperty Name="NgayChiDao" ColumnName="NgayChiDao" />
+                <ScalarProperty Name="NgayPhaiHoanThanh" ColumnName="NgayPhaiHoanThanh" />
+                <ScalarProperty Name="PhaiBaoCao" ColumnName="PhaiBaoCao" />
+                <ScalarProperty Name="NguoiNhanVanBan" ColumnName="NguoiNhanVanBan" />
+                <ScalarProperty Name="TomTatKetQua" ColumnName="TomTatKetQua" />
+                <ScalarProperty Name="TaiLieuDinhKem" ColumnName="TaiLieuDinhKem" />
+                <ScalarProperty Name="HoanThanh" ColumnName="HoanThanh" />
+                <ScalarProperty Name="ChuaHoanThanh" ColumnName="ChuaHoanThanh" />
+                <ScalarProperty Name="DangThucHien" ColumnName="DangThucHien" />
+                <ScalarProperty Name="ChuaThucHien" ColumnName="ChuaThucHien" />
+                <ScalarProperty Name="ThucHienCham" ColumnName="ThucHienCham" />
+                <ScalarProperty Name="KetThucCongViec" ColumnName="KetThucCongViec" />
+                <ScalarProperty Name="NgayHoanThanh" ColumnName="NgayHoanThanh" />
+                <ScalarProperty Name="NgayTaoCongViec" ColumnName="NgayTaoCongViec" />
+                <ScalarProperty Name="NgaySuaCongViec" ColumnName="NgaySuaCongViec" />
+                <ScalarProperty Name="StatusForward" ColumnName="StatusForward" />
+                <ScalarProperty Name="Id_tbl_AccountSupport" ColumnName="Id_tbl_AccountSupport" />
+                <ScalarProperty Name="Id_tbl_CongViec" ColumnName="Id_tbl_CongViec" />
+                <ScalarProperty Name="Id_AccountTiepNhan" ColumnName="Id_AccountTiepNhan" />
+                <ScalarProperty Name="NgayChuyenDen" ColumnName="NgayChuyenDen" />
+                <ScalarProperty Name="NgayTiepNhan" ColumnName="NgayTiepNhan" />
+                <ScalarProperty Name="NgayHoanThanhSupport" ColumnName="NgayHoanThanhSupport" />
+                <ScalarProperty Name="KetQuaCongViec" ColumnName="KetQuaCongViec" />
+                <ScalarProperty Name="PhanCongCongViec" ColumnName="PhanCongCongViec" />
+                <ScalarProperty Name="NgaySua" ColumnName="NgaySua" />
+                <ScalarProperty Name="StatusReceived" ColumnName="StatusReceived" />
+                <ScalarProperty Name="StatusFinish" ColumnName="StatusFinish" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="QuanlyViecNhomChiTiet" FunctionName="TheoDoiVanBanModel.Store.QuanlyViecNhomChiTiet">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TheoDoiVanBanModel.QuanlyViecNhomChiTiet_Result">
+                <ScalarProperty Name="Id_Account" ColumnName="Id_Account" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Avartar" ColumnName="Avartar" />
+                <ScalarProperty Name="Id_DonVi_Tbl_DonVi" ColumnName="Id_DonVi_Tbl_DonVi" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="IdParent" ColumnName="IdParent" />
+                <ScalarProperty Name="NameParent" ColumnName="NameParent" />
+                <ScalarProperty Name="Level" ColumnName="Level" />
+                <ScalarProperty Name="TopLevelParent" ColumnName="TopLevelParent" />
+                <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+                <ScalarProperty Name="ChildID" ColumnName="ChildID" />
+                <ScalarProperty Name="Id_CongViec" ColumnName="Id_CongViec" />
+                <ScalarProperty Name="Id_AccountKhoiTao" ColumnName="Id_AccountKhoiTao" />
+                <ScalarProperty Name="Id_AccountGiaoViec" ColumnName="Id_AccountGiaoViec" />
+                <ScalarProperty Name="SoVanBan" ColumnName="SoVanBan" />
+                <ScalarProperty Name="NgayPhatHanh" ColumnName="NgayPhatHanh" />
+                <ScalarProperty Name="SoGhiSoCongVan" ColumnName="SoGhiSoCongVan" />
+                <ScalarProperty Name="NgayNhanVanBan" ColumnName="NgayNhanVanBan" />
+                <ScalarProperty Name="Id_CoQuanBanHanh" ColumnName="Id_CoQuanBanHanh" />
+                <ScalarProperty Name="Id_loaiVanBan" ColumnName="Id_loaiVanBan" />
+                <ScalarProperty Name="Id_LinhVucVanBan" ColumnName="Id_LinhVucVanBan" />
+                <ScalarProperty Name="CommentLanhDao" ColumnName="CommentLanhDao" />
+                <ScalarProperty Name="NoiDungVanBan" ColumnName="NoiDungVanBan" />
+                <ScalarProperty Name="NgayChiDao" ColumnName="NgayChiDao" />
+                <ScalarProperty Name="NgayPhaiHoanThanh" ColumnName="NgayPhaiHoanThanh" />
+                <ScalarProperty Name="PhaiBaoCao" ColumnName="PhaiBaoCao" />
+                <ScalarProperty Name="NguoiNhanVanBan" ColumnName="NguoiNhanVanBan" />
+                <ScalarProperty Name="TomTatKetQua" ColumnName="TomTatKetQua" />
+                <ScalarProperty Name="TaiLieuDinhKem" ColumnName="TaiLieuDinhKem" />
+                <ScalarProperty Name="HoanThanh" ColumnName="HoanThanh" />
+                <ScalarProperty Name="ChuaHoanThanh" ColumnName="ChuaHoanThanh" />
+                <ScalarProperty Name="DangThucHien" ColumnName="DangThucHien" />
+                <ScalarProperty Name="ChuaThucHien" ColumnName="ChuaThucHien" />
+                <ScalarProperty Name="ThucHienCham" ColumnName="ThucHienCham" />
+                <ScalarProperty Name="KetThucCongViec" ColumnName="KetThucCongViec" />
+                <ScalarProperty Name="NgayHoanThanh" ColumnName="NgayHoanThanh" />
+                <ScalarProperty Name="NgayTaoCongViec" ColumnName="NgayTaoCongViec" />
+                <ScalarProperty Name="NgaySuaCongViec" ColumnName="NgaySuaCongViec" />
+                <ScalarProperty Name="StatusForward" ColumnName="StatusForward" />
+                <ScalarProperty Name="Id_tbl_AccountSupport" ColumnName="Id_tbl_AccountSupport" />
+                <ScalarProperty Name="Id_tbl_CongViec" ColumnName="Id_tbl_CongViec" />
+                <ScalarProperty Name="Id_AccountTiepNhan" ColumnName="Id_AccountTiepNhan" />
+                <ScalarProperty Name="NgayChuyenDen" ColumnName="NgayChuyenDen" />
+                <ScalarProperty Name="NgayTiepNhan" ColumnName="NgayTiepNhan" />
+                <ScalarProperty Name="NgayHoanThanhSupport" ColumnName="NgayHoanThanhSupport" />
+                <ScalarProperty Name="KetQuaCongViec" ColumnName="KetQuaCongViec" />
+                <ScalarProperty Name="PhanCongCongViec" ColumnName="PhanCongCongViec" />
+                <ScalarProperty Name="NgaySua" ColumnName="NgaySua" />
+                <ScalarProperty Name="StatusReceived" ColumnName="StatusReceived" />
+                <ScalarProperty Name="StatusFinish" ColumnName="StatusFinish" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UpdateGiaiQuyetViecDaNhan" FunctionName="TheoDoiVanBanModel.Store.UpdateGiaiQuyetViecDaNhan" />
+          <FunctionImportMapping FunctionImportName="UpdateNhanViec" FunctionName="TheoDoiVanBanModel.Store.UpdateNhanViec" />
+          <FunctionImportMapping FunctionImportName="ViecDaNhan" FunctionName="TheoDoiVanBanModel.Store.ViecDaNhan">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TheoDoiVanBanModel.ViecDaNhan_Result">
+                <ScalarProperty Name="Id_tbl_AccountSupport" ColumnName="Id_tbl_AccountSupport" />
+                <ScalarProperty Name="Id_tbl_CongViec" ColumnName="Id_tbl_CongViec" />
+                <ScalarProperty Name="Id_AccountTiepNhan" ColumnName="Id_AccountTiepNhan" />
+                <ScalarProperty Name="NgayChuyenDen" ColumnName="NgayChuyenDen" />
+                <ScalarProperty Name="NgayTiepNhan" ColumnName="NgayTiepNhan" />
+                <ScalarProperty Name="NgayHoanThanhSupport" ColumnName="NgayHoanThanhSupport" />
+                <ScalarProperty Name="KetQuaCongViec" ColumnName="KetQuaCongViec" />
+                <ScalarProperty Name="PhanCongCongViec" ColumnName="PhanCongCongViec" />
+                <ScalarProperty Name="NgaySua" ColumnName="NgaySua" />
+                <ScalarProperty Name="StatusReceived" ColumnName="StatusReceived" />
+                <ScalarProperty Name="StatusFinish" ColumnName="StatusFinish" />
+                <ScalarProperty Name="Id_CongViec" ColumnName="Id_CongViec" />
+                <ScalarProperty Name="Id_AccountKhoiTao" ColumnName="Id_AccountKhoiTao" />
+                <ScalarProperty Name="Id_AccountGiaoViec" ColumnName="Id_AccountGiaoViec" />
+                <ScalarProperty Name="SoVanBan" ColumnName="SoVanBan" />
+                <ScalarProperty Name="NgayPhatHanh" ColumnName="NgayPhatHanh" />
+                <ScalarProperty Name="SoGhiSoCongVan" ColumnName="SoGhiSoCongVan" />
+                <ScalarProperty Name="NgayNhanVanBan" ColumnName="NgayNhanVanBan" />
+                <ScalarProperty Name="Id_CoQuanBanHanh" ColumnName="Id_CoQuanBanHanh" />
+                <ScalarProperty Name="Id_loaiVanBan" ColumnName="Id_loaiVanBan" />
+                <ScalarProperty Name="Id_LinhVucVanBan" ColumnName="Id_LinhVucVanBan" />
+                <ScalarProperty Name="CommentLanhDao" ColumnName="CommentLanhDao" />
+                <ScalarProperty Name="NoiDungVanBan" ColumnName="NoiDungVanBan" />
+                <ScalarProperty Name="NgayChiDao" ColumnName="NgayChiDao" />
+                <ScalarProperty Name="NgayPhaiHoanThanh" ColumnName="NgayPhaiHoanThanh" />
+                <ScalarProperty Name="PhaiBaoCao" ColumnName="PhaiBaoCao" />
+                <ScalarProperty Name="NguoiNhanVanBan" ColumnName="NguoiNhanVanBan" />
+                <ScalarProperty Name="TomTatKetQua" ColumnName="TomTatKetQua" />
+                <ScalarProperty Name="TaiLieuDinhKem" ColumnName="TaiLieuDinhKem" />
+                <ScalarProperty Name="HoanThanh" ColumnName="HoanThanh" />
+                <ScalarProperty Name="ChuaHoanThanh" ColumnName="ChuaHoanThanh" />
+                <ScalarProperty Name="DangThucHien" ColumnName="DangThucHien" />
+                <ScalarProperty Name="ChuaThucHien" ColumnName="ChuaThucHien" />
+                <ScalarProperty Name="ThucHienCham" ColumnName="ThucHienCham" />
+                <ScalarProperty Name="KetThucCongViec" ColumnName="KetThucCongViec" />
+                <ScalarProperty Name="NgayHoanThanh" ColumnName="NgayHoanThanh" />
+                <ScalarProperty Name="NgayTaoCongViec" ColumnName="NgayTaoCongViec" />
+                <ScalarProperty Name="NgaySuaCongViec" ColumnName="NgaySuaCongViec" />
+                <ScalarProperty Name="StatusForward" ColumnName="StatusForward" />
+                <ScalarProperty Name="Id_Account" ColumnName="Id_Account" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Avartar" ColumnName="Avartar" />
+                <ScalarProperty Name="Id_DonVi_Tbl_DonVi" ColumnName="Id_DonVi_Tbl_DonVi" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="IdParent" ColumnName="IdParent" />
+                <ScalarProperty Name="NameParent" ColumnName="NameParent" />
+                <ScalarProperty Name="Level" ColumnName="Level" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="tbl_Group_DonVi_CongViec" FunctionName="TheoDoiVanBanModel.Store.tbl_Group_DonVi_CongViec">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TheoDoiVanBanModel.tbl_Group_DonVi_CongViec_Result">
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="SoVanBan" ColumnName="SoVanBan" />
+                <ScalarProperty Name="SoGhiSoCongVan" ColumnName="SoGhiSoCongVan" />
+                <ScalarProperty Name="CommentLanhDao" ColumnName="CommentLanhDao" />
+                <ScalarProperty Name="NoiDungVanBan" ColumnName="NoiDungVanBan" />
+                <ScalarProperty Name="TopLevelParent" ColumnName="TopLevelParent" />
+                <ScalarProperty Name="IdCV" ColumnName="IdCV" />
+                <ScalarProperty Name="IdAccount" ColumnName="IdAccount" />
+                <ScalarProperty Name="ketqua" ColumnName="ketqua" />
+                <ScalarProperty Name="ngayhoanthanh" ColumnName="ngayhoanthanh" />
+                <ScalarProperty Name="kethuc" ColumnName="kethuc" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetAllDonViCongViec" FunctionName="TheoDoiVanBanModel.Store.GetAllDonViCongViec">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TheoDoiVanBanModel.GetAllDonViCongViec_Result">
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="SoVanBan" ColumnName="SoVanBan" />
+                <ScalarProperty Name="SoGhiSoCongVan" ColumnName="SoGhiSoCongVan" />
+                <ScalarProperty Name="CommentLanhDao" ColumnName="CommentLanhDao" />
+                <ScalarProperty Name="NoiDungVanBan" ColumnName="NoiDungVanBan" />
+                <ScalarProperty Name="TopLevelParent" ColumnName="TopLevelParent" />
+                <ScalarProperty Name="IdCV" ColumnName="IdCV" />
+                <ScalarProperty Name="IdAccount" ColumnName="IdAccount" />
+                <ScalarProperty Name="ketqua" ColumnName="ketqua" />
+                <ScalarProperty Name="ngayhoanthanh" ColumnName="ngayhoanthanh" />
+                <ScalarProperty Name="kethuc" ColumnName="kethuc" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

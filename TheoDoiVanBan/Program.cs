@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using DevExpress.UserSkins;
+using System;
 using System.Windows.Forms;
-using DevExpress.UserSkins;
-using DevExpress.Skins;
 
 namespace TheoDoiVanBan
 {
@@ -19,6 +16,14 @@ namespace TheoDoiVanBan
             Application.SetCompatibleTextRenderingDefault(false);
 
             BonusSkins.Register();
+            #region login
+            var _login = new Login();
+            _login.ShowDialog();
+            if (_login.DialogResult != DialogResult.OK)
+            {
+                return;
+            }
+            #endregion
             Application.Run(new Main());
         }
     }

@@ -34,16 +34,27 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DevExpress.BonusSkins.v19.1" />
-    <Reference Include="DevExpress.Data.v19.1" />
-    <Reference Include="DevExpress.Printing.v19.1.Core" />
-    <Reference Include="DevExpress.Utils.v19.1" />
-    <Reference Include="DevExpress.XtraBars.v19.1" />
-    <Reference Include="DevExpress.Sparkline.v19.1.Core" />
-    <Reference Include="DevExpress.XtraEditors.v19.1" />
-    <Reference Include="DevExpress.XtraLayout.v19.1, Version=19.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.BonusSkins.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Data.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.PivotGrid.v19.2.Core, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Sparkline.v19.2.Core, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Utils.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraBars.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGrid.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraLayout.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraPrinting.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -54,11 +65,115 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Login.cs">
+    <Compile Include="AddCongViec.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Login.Designer.cs">
+    <Compile Include="AddCongViec.Designer.cs">
+      <DependentUpon>AddCongViec.cs</DependentUpon>
+    </Compile>
+    <Compile Include="checkreceived_Result.cs">
+      <DependentUpon>TheoDoiVanBan.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CongViecCacDoi.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CongViecCacDoi.Designer.cs">
+      <DependentUpon>CongViecCacDoi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CongViecChuaNhan.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CongViecChuaNhan.Designer.cs">
+      <DependentUpon>CongViecChuaNhan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormAddCongViec.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAddCongViec.Designer.cs">
+      <DependentUpon>FormAddCongViec.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmVanBanCuaDoi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmVanBanCuaDoi.Designer.cs">
+      <DependentUpon>FrmVanBanCuaDoi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GetAccountInGroup_Result.cs">
+      <DependentUpon>TheoDoiVanBan.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetAllAccountSupport_OneJob_Result.cs">
+      <DependentUpon>TheoDoiVanBan.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetAllCoQuanVaDonVi_Result.cs">
+      <DependentUpon>TheoDoiVanBan.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetAllDonViCongViec_Result.cs">
+      <DependentUpon>TheoDoiVanBan.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetAllLinhVucBanHanh_Result.cs">
+      <DependentUpon>TheoDoiVanBan.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetAllLoaiVanBan_Result.cs">
+      <DependentUpon>TheoDoiVanBan.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetCreateJobPhoPhong_Result.cs">
+      <DependentUpon>TheoDoiVanBan.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetCreateJobTruongPhong_Result.cs">
+      <DependentUpon>TheoDoiVanBan.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetCreateJob_Result.cs">
+      <DependentUpon>TheoDoiVanBan.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetForwardCreateJob_Result.cs">
+      <DependentUpon>TheoDoiVanBan.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetInfor_Result.cs">
+      <DependentUpon>TheoDoiVanBan.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetOneCongViec_Result.cs">
+      <DependentUpon>TheoDoiVanBan.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HeThong\ChangeInfor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HeThong\ChangeInfor.Designer.cs">
+      <DependentUpon>ChangeInfor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HeThong\ChangePass.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HeThong\ChangePass.Designer.cs">
+      <DependentUpon>ChangePass.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HeThong\DinhDanhAccount.cs" />
+    <Compile Include="HeThong\Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HeThong\Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HeThong\Mahoa.cs" />
+    <Compile Include="HeThong\ManagementAccount.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="HeThong\ManagementAccount.Designer.cs">
+      <DependentUpon>ManagementAccount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HoanThanhCongViec.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HoanThanhCongViec.Designer.cs">
+      <DependentUpon>HoanThanhCongViec.cs</DependentUpon>
+    </Compile>
+    <Compile Include="KhoiTaoCongViecCopy.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="KhoiTaoCongViecCopy.Designer.cs">
+      <DependentUpon>KhoiTaoCongViecCopy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="login_Result.cs">
+      <DependentUpon>TheoDoiVanBan.tt</DependentUpon>
     </Compile>
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
@@ -66,9 +181,104 @@
     <Compile Include="Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
+    <Compile Include="ManageAccount.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ManageAccount.Designer.cs">
+      <DependentUpon>ManageAccount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NhanViecChiTiet_Result.cs">
+      <DependentUpon>TheoDoiVanBan.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NhanViec_Result.cs">
+      <DependentUpon>TheoDoiVanBan.tt</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="KhoiTaoCongViec.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="KhoiTaoCongViec.Designer.cs">
+      <DependentUpon>KhoiTaoCongViec.cs</DependentUpon>
+    </Compile>
+    <Compile Include="QuanlyViecNhomChiTiet_Result.cs">
+      <DependentUpon>TheoDoiVanBan.tt</DependentUpon>
+    </Compile>
+    <Compile Include="QuanlyViecNhom_Result.cs">
+      <DependentUpon>TheoDoiVanBan.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_Account.cs">
+      <DependentUpon>TheoDoiVanBan.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_AccountSupport.cs">
+      <DependentUpon>TheoDoiVanBan.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_CongViec.cs">
+      <DependentUpon>TheoDoiVanBan.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_CoQuanBanHanh.cs">
+      <DependentUpon>TheoDoiVanBan.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_Donvi.cs">
+      <DependentUpon>TheoDoiVanBan.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_Group_DonVi_CongViec_Result.cs">
+      <DependentUpon>TheoDoiVanBan.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_LinhVucBanHanh.cs">
+      <DependentUpon>TheoDoiVanBan.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_LoaiVanBan.cs">
+      <DependentUpon>TheoDoiVanBan.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TheoDoiVanBan.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TheoDoiVanBan.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TheoDoiVanBan.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TheoDoiVanBan.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TheoDoiVanBan.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TheoDoiVanBan.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="UcCongViecCuaMinh.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UcCongViecCuaMinh.Designer.cs">
+      <DependentUpon>UcCongViecCuaMinh.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UcCreateJob.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UcCreateJob.Designer.cs">
+      <DependentUpon>UcCreateJob.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UcTheoDoiVanBanDen.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UcTheoDoiVanBanDen.Designer.cs">
+      <DependentUpon>UcTheoDoiVanBanDen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GiaoViec.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GiaoViec.Designer.cs">
+      <DependentUpon>GiaoViec.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViecDaNhan_Result.cs">
+      <DependentUpon>TheoDoiVanBan.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewDonViVaCoQuan.cs">
+      <DependentUpon>TheoDoiVanBan.tt</DependentUpon>
+    </Compile>
+    <None Include=".editorconfig" />
     <None Include="App.config" />
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -78,14 +288,87 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EntityDeploy Include="TheoDoiVanBan.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>TheoDoiVanBan.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="TheoDoiVanBan.edmx.diagram">
+      <DependentUpon>TheoDoiVanBan.edmx</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Login.resx">
+    <EmbeddedResource Include="AddCongViec.resx">
+      <DependentUpon>AddCongViec.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CongViecCacDoi.resx">
+      <DependentUpon>CongViecCacDoi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CongViecChuaNhan.resx">
+      <DependentUpon>CongViecChuaNhan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmVanBanCuaDoi.resx">
+      <DependentUpon>FrmVanBanCuaDoi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HeThong\ChangeInfor.resx">
+      <DependentUpon>ChangeInfor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HeThong\ChangePass.resx">
+      <DependentUpon>ChangePass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HeThong\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="HeThong\ManagementAccount.resx">
+      <DependentUpon>ManagementAccount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HoanThanhCongViec.resx">
+      <DependentUpon>HoanThanhCongViec.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="KhoiTaoCongViecCopy.resx">
+      <DependentUpon>KhoiTaoCongViecCopy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main.resx">
+      <DependentUpon>Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ManageAccount.resx">
+      <DependentUpon>ManageAccount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="KhoiTaoCongViec.resx">
+      <DependentUpon>KhoiTaoCongViec.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="UcCongViecCuaMinh.resx">
+      <DependentUpon>UcCongViecCuaMinh.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UcCreateJob.resx">
+      <DependentUpon>UcCreateJob.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UcTheoDoiVanBanDen.resx">
+      <DependentUpon>UcTheoDoiVanBanDen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GiaoViec.resx">
+      <DependentUpon>GiaoViec.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Admin\" />
+    <Folder Include="Management\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="TheoDoiVanBan.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>TheoDoiVanBan.edmx</DependentUpon>
+      <LastGenOutput>TheoDoiVanBan.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="TheoDoiVanBan.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>TheoDoiVanBan.edmx</DependentUpon>
+      <LastGenOutput>TheoDoiVanBan.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
